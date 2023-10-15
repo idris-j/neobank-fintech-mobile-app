@@ -48,7 +48,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
       body: Form(
         key: _key,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthOf(5)),
+          padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthOf(7)),
           child: ListView(
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -74,6 +74,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
               vertical30,
               CustomTextField(
                   labelText: "Full Name",
+                  hintText: 'Full Name',
                   controller: signUpProvider.firstName,
                   // textInputType: TextInputType.number,
                   readOnly: signUpProvider.disableTextField,
@@ -83,6 +84,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
               vertical15,
               CustomTextField(
                   labelText: "Business Name",
+                  hintText: 'Business Name',
                   controller: signUpProvider.middleName,
                   // textInputType: TextInputType.number,
 
@@ -90,6 +92,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
               vertical15,
               CustomTextField(
                   labelText: "Business Reg. No.",
+                  hintText: 'Business Reg. No.',
                   controller: signUpProvider.lastName,
                   readOnly: signUpProvider.disableTextField,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -98,6 +101,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
               vertical15,
               CustomTextField(
                   labelText: "Email",
+                  hintText: 'Email',
                   controller: signUpProvider.email,
                   readOnly: signUpProvider.disableTextField,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -106,6 +110,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
               vertical15,
               CustomTextField(
                   labelText: "Phone Number",
+                  hintText: 'Phone Number',
                   controller: signUpProvider.phoneNumber,
                   readOnly: signUpProvider.disableTextField,
                   autovalidateMode: AutovalidateMode.onUserInteraction,

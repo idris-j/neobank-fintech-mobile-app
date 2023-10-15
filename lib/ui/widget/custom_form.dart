@@ -72,112 +72,94 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          myFocusNode.requestFocus();
-        });
-      },
-      child: Container(
-        // height: 65,
-        decoration: BoxDecoration(
-            // color: Theme.of(context).hintColor,
-            border: Border.all(color: Colors.grey),
-            // color: Colors.red,
-            borderRadius: KBORDERRADIUS),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "${widget.labelText}",
+          style: txStyle14,
+        ),
+        vertical5,
+        Container(
+          color: Color(0xffF9FAFB),
+          child: Row(
             children: [
-              Text(
-                "${widget.labelText}",
-                style: txStyle14,
-              ),
-              vertical5,
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      focusNode: myFocusNode,
-                      autocorrect: false,
-                      inputFormatters: [
-                        widget.formatters ??
-                            FilteringTextInputFormatter.deny(''),
-                      ],
-                      autovalidateMode: widget.autovalidateMode,
-                      keyboardType: widget.textInputType,
-                      textInputAction: widget.textInputAction,
-                      readOnly: widget.readOnly!,
-                      controller: widget.controller,
-                      onTap: widget.onTap,
-                      obscureText: hide,
-                      obscuringCharacter: '•',
-                      maxLines: widget.maxLines ?? 1,
-                      validator: widget.validator,
-                      onChanged: widget.onChanged,
-                      style: txStyle16,
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.zero,
-                        // labelText: widget.labelText,
+              Expanded(
+                child: TextFormField(
+                  focusNode: myFocusNode,
+                  autocorrect: false,
+                  inputFormatters: [
+                    widget.formatters ?? FilteringTextInputFormatter.deny(''),
+                  ],
+                  autovalidateMode: widget.autovalidateMode,
+                  keyboardType: widget.textInputType,
+                  textInputAction: widget.textInputAction,
+                  readOnly: widget.readOnly!,
+                  controller: widget.controller,
+                  onTap: widget.onTap,
+                  obscureText: hide,
+                  obscuringCharacter: '•',
+                  maxLines: widget.maxLines ?? 1,
+                  validator: widget.validator,
+                  onChanged: widget.onChanged,
+                  style: txStyle16,
+                  cursorColor: Colors.black,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                    prefixIcon: widget.prefix,
+                    // isDense: true,
+                    fillColor: Colors.red,
+                    filled: false,
+                    hintText: widget.hintText,
+                    hintStyle: txStyle16.copyWith(
+                        color: widget.darkenText
+                            ? Theme.of(context).iconTheme.color
+                            : Colors.grey),
+                    border: InputBorder.none,
 
-                        border: InputBorder.none,
-
-                        prefixIcon: widget.prefix,
-                        isDense: true,
-                        fillColor: Colors.transparent,
-
-                        // filled: false,
-                        hintText: widget.hintText,
-                        hintStyle: txStyle16.copyWith(
-                            color: widget.darkenText
-                                ? Theme.of(context).iconTheme.color
-                                : Colors.grey),
-                        // enabledBorder: OutlineInputBorder(
-                        //   borderSide:
-                        //       BorderSide(color: Color(0xff667080).withOpacity(0.4)),
-                        //   borderRadius: BorderRadius.all(Radius.circular(10)),
-                        // ),
-                        // border: OutlineInputBorder(
-                        //   borderRadius: BorderRadius.all(Radius.circular(8)),
-                        // ),
-                        // suffixIcon: Icon(Icons.visibility_off)
-                      ),
-                    ),
+                    // enabledBorder: OutlineInputBorder(
+                    //   borderSide:
+                    //       BorderSide(color: Color(0xff667080).withOpacity(0.4)),
+                    //   borderRadius: BorderRadius.all(Radius.circular(10)),
+                    // ),
+                    // border: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.all(Radius.circular(8)),
+                    // ),
+                    // suffixIcon: Icon(Icons.visibility_off)
                   ),
-                  widget.obscureText
-                      ? Row(
-                          children: [
-                            // horizontalx10,
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  hide = !hide;
-                                });
-                              },
-                              child: hide
-                                  ? const Icon(
-                                      Icons.visibility_outlined,
-                                      size: 20,
-                                      color: appPrimaryColor,
-                                    )
-                                  : const Icon(
-                                      Icons.visibility_off_outlined,
-                                      size: 20,
-                                      color: appPrimaryColor,
-                                    ),
-                            ),
-                          ],
-                        )
-                      : widget.suffixIcon != null
-                          ? widget.suffixIcon!
-                          : const SizedBox.shrink()
-                ],
+                ),
               ),
+              widget.obscureText
+                  ? Row(
+                      children: [
+                        // horizontalx10,
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              hide = !hide;
+                            });
+                          },
+                          child: hide
+                              ? const Icon(
+                                  Icons.visibility_outlined,
+                                  size: 20,
+                                  color: appPrimaryColor,
+                                )
+                              : const Icon(
+                                  Icons.visibility_off_outlined,
+                                  size: 20,
+                                  color: appPrimaryColor,
+                                ),
+                        ),
+                      ],
+                    )
+                  : widget.suffixIcon != null
+                      ? widget.suffixIcon!
+                      : const SizedBox.shrink()
             ],
           ),
         ),
-      ),
+      ],
     );
   }
 }
