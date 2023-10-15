@@ -36,11 +36,12 @@ class CustomButtonLoad extends StatelessWidget {
     return InkWell(
       onTap: userProv == ViewState.Busy ? null : onTap,
       child: Container(
-        height: height ?? 45,
+        height: height ?? 60,
+        width: 350,
         decoration: BoxDecoration(
-          color: onTap == null ? Colors.grey : buttonColor ?? appPrimaryColor,
+          color: onTap == null ? Colors.black : buttonColor ?? appPrimaryColor,
           border: Border.all(color: borderColor ?? Colors.transparent),
-          borderRadius: KBORDERRADIUS,
+          borderRadius: BUTTONBORDERRADIUS,
         ),
         child: Center(
           child: ResponsiveState(

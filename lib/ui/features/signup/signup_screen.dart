@@ -1,6 +1,7 @@
 import 'package:payprice/shared/size.dart';
 import 'package:payprice/shared/sizeConfig.dart';
 import 'package:payprice/shared/text_style.dart';
+import 'package:payprice/ui/features/login/login_screen.dart';
 import 'package:payprice/ui/features/signup/create_password_screen.dart';
 import 'package:payprice/ui/features/signup/signup_repository.dart';
 import 'package:payprice/ui/widget/custom_app_bar.dart';
@@ -72,7 +73,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
               ),
               vertical30,
               CustomTextField(
-                  labelText: "First Name",
+                  labelText: "Full Name",
                   controller: signUpProvider.firstName,
                   // textInputType: TextInputType.number,
                   readOnly: signUpProvider.disableTextField,
@@ -81,14 +82,14 @@ class _SingUpScreenState extends State<SingUpScreen> {
                   onChanged: (text) => signUpProvider.checkSignUp()),
               vertical15,
               CustomTextField(
-                  labelText: "Middle Name(Optional)",
+                  labelText: "Business Name",
                   controller: signUpProvider.middleName,
                   // textInputType: TextInputType.number,
 
                   readOnly: signUpProvider.disableTextField),
               vertical15,
               CustomTextField(
-                  labelText: "Last Name",
+                  labelText: "Business Reg. No.",
                   controller: signUpProvider.lastName,
                   readOnly: signUpProvider.disableTextField,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -113,7 +114,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                   onChanged: (text) => signUpProvider.checkSignUp()),
               vertical30,
               CustomButtonLoad(
-                  label: "Continue",
+                  label: "CREATE ACCOUNT",
                   userProv: signUpProvider.state,
                   onTap: signUpProvider.signupCompleted
                       ? () {
@@ -123,6 +124,25 @@ class _SingUpScreenState extends State<SingUpScreen> {
                         }
                       : null),
               vertical30,
+              InkWell(
+                onTap: () {
+                  Get.to(LoginScreen());
+                },
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: 'Already have an account? ',
+                    style: txStyle14.copyWith(
+                        color: Theme.of(context).iconTheme.color),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Login',
+                        style: txStyle14.copyWith(color: Colors.black),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

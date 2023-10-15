@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              "asset/images/brixb_logo.png",
+              "asset/images/payprice-logo-yellow.png",
               height: 50,
               width: 50,
             ),
@@ -67,9 +67,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: txStyle27Bold,
               ),
             ),
+            vertical10,
             Center(
               child: Text(
-                "Log into your account to continue",
+                "Securely login to your Payprice",
                 style: txStyle16,
               ),
             ),
@@ -91,22 +92,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) => loginProvider.validatePassword(value!),
                 onChanged: (text) => loginProvider.checkLoginForm()),
-            vertical20,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "Forgot password?",
-                  style: txStyle13.copyWith(color: Colors.grey),
-                )
-              ],
-            ),
-            vertical30,
+            vertical50,
             Row(
               children: [
                 Expanded(
                   child: CustomButtonLoad(
-                      label: "Login",
+                      label: "LOG IN",
                       userProv: loginProvider.state,
                       onTap: loginProvider.loginComplete
                           ? () async {
@@ -148,14 +139,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Theme.of(context).iconTheme.color),
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'Create an account',
+                      text: 'Register',
                       style: txStyle14.copyWith(color: appPrimaryColor),
                     )
                   ],
                 ),
               ),
             ),
-            vertical30,
+            vertical120,
+            vertical120,
+            vertical50,
+            vertical50,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "Forgot password?",
+                  style: txStyle13.copyWith(color: Colors.grey),
+                )
+              ],
+            ),
           ],
         ),
       ),
