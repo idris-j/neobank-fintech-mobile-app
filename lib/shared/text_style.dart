@@ -33,7 +33,7 @@ var txStyle15 = _createTextStyle(15);
 
 var txStyle15Bold = _createTextStyle(15, fontWeight: FontWeight.bold);
 
-var txStyle16 = _createTextStyle(16);
+var txStyle16 = _createTextStyle(11);
 
 var txStyle16Bold = _createTextStyle(16, fontWeight: FontWeight.bold);
 
@@ -51,7 +51,7 @@ var txStyle25Bold = _createTextStyle(25, fontWeight: FontWeight.bold);
 
 var txStyle27 = _createTextStyle(27);
 
-var txStyle27Bold = _createTextStyle(27, fontWeight: FontWeight.bold);
+var txStyle27Bold = _createTextStyle(15, fontWeight: FontWeight.bold);
 
 //////////////////
 

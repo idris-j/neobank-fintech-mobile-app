@@ -52,20 +52,21 @@ class _SingUpScreenState extends State<SingUpScreen> {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                "asset/images/brixb_logo.png",
+                "asset/images/payprice-logo-yellow.png",
                 height: 50,
                 width: 50,
               ),
               vertical20,
               Center(
                 child: Text(
-                  "Create an account",
+                  "Create a Secure Account",
                   style: txStyle27Bold,
                 ),
               ),
+              vertical10,
               Center(
                 child: Text(
-                  "Join the revolution",
+                  "Welcome to the future of payments and sustainability",
                   style: txStyle16,
                 ),
               ),

@@ -19,14 +19,6 @@ class GetStartedScreen extends StatelessWidget {
     List<GetStartedItem> items = [
       GetStartedItem("asset/lottie/getStarted.json",
           "Revolutionise  your business, cut down overhead cost", true),
-      GetStartedItem(
-          "asset/lottie/eco_friendly.json",
-          "Embrace Greener Payments with payprice: Redefining Transactions for a Sustainable Future!",
-          false),
-      GetStartedItem(
-          "asset/lottie/diversity.json",
-          "Secure Multiplicity: Elevate Payment Collection with Unparalleled Security.",
-          false),
     ];
     final themeProvider = Provider.of<ThemeProvider>(context);
 
@@ -44,7 +36,7 @@ class GetStartedScreen extends StatelessWidget {
                         children: [
                           Container(
                               decoration: BoxDecoration(
-                                  color: Color(0xFFE0F4E9),
+                                  color: Color(0xFFFFFFFF),
                                   shape: BoxShape.circle),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -71,7 +63,7 @@ class GetStartedScreen extends StatelessWidget {
             vertical2s,
             CustomButton(
               label: "Login",
-              borderColor: appPrimaryColor,
+              borderColor: Colors.white,
               buttonColor: Colors.transparent,
               textColor: themeProvider.isdark ? Colors.white : appPrimaryColor,
               onTap: () {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-const appPrimaryColor = Color(0xff09414a);
+const appPrimaryColor = Color(0xff000000);
 const appSecondaryColor = Color(0xffe2ffa1);
+const brandColor = Color(0xFFFABA46);
 
 final greenColor = Colors.green.shade600;
 

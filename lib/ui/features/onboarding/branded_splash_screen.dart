@@ -1,19 +1,18 @@
 import 'dart:async';
 
-import 'package:payprice/ui/features/onboarding/branded_splash_screen.dart';
 import 'package:payprice/ui/features/onboarding/get_started_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import '../../../shared/sizeConfig.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class brandedSplashScreen extends StatefulWidget {
+  const brandedSplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<brandedSplashScreen> createState() => _brandedSplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _brandedSplashScreenState extends State<brandedSplashScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -24,14 +23,14 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2), () async {
-      Get.off(brandedSplashScreen());
+      Get.off(GetStartedScreen());
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfffaba46),
+      backgroundColor: Color(0xfffffffff),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Center(
@@ -40,9 +39,9 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "asset/images/payprice-favicon.png",
-                height: SizeConfig.heightOf(25),
-                width: SizeConfig.widthOf(25),
+                "asset/images/payprice-logo.png",
+                height: SizeConfig.heightOf(55),
+                width: SizeConfig.widthOf(55),
               ),
             ],
           ),

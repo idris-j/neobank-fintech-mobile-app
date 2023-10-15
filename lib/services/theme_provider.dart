@@ -38,8 +38,8 @@ class ThemeProvider extends ChangeNotifier {
 }
 
 final ThemeData appThemeLight = ThemeData(
-  primaryColor: const Color(0xFF09414A),
-  scaffoldBackgroundColor: const Color(0xFFE0F4E9),
+  primaryColor: const Color(0xFFFABA46),
+  scaffoldBackgroundColor: const Color(0xFFFFFFFF),
   colorScheme: const ColorScheme.light(
     brightness: Brightness.light,
     background: Colors.white,
