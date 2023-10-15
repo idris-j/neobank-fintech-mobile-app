@@ -142,7 +142,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             quickActionWidget(
-                              title: "Collect\nPayment",
+                              title: "Receive",
                               image: "asset/svgs/hand-coins.svg",
                               onTap: () {
                                 Get.to(CollectPaymentScreen());
@@ -154,7 +154,12 @@ class HomeScreen extends StatelessWidget {
                               onTap: () {},
                             ),
                             quickActionWidget(
-                              title: "Refer",
+                              title: "Details",
+                              image: "asset/svgs/user-plus.svg",
+                              onTap: () {},
+                            ),
+                            quickActionWidget(
+                              title: "Connect",
                               image: "asset/svgs/user-plus.svg",
                               onTap: () {},
                             ),
@@ -162,70 +167,6 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       vertical30,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Profile setup",
-                            style: txStyle14Bold,
-                          ),
-                          Text(
-                            "20% complete",
-                            style: txStyle12,
-                          )
-                        ],
-                      ),
-                      vertical20,
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: appPrimaryColor,
-                            ),
-                            borderRadius: KBORDERRADIUS),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "PIN",
-                                    style: txStyle12Bold,
-                                  ),
-                                  vertical5,
-                                  SizedBox(
-                                    width: SizeConfig.widthOf(70),
-                                    child: Text(
-                                      "Create a 4 digit to PIN for validating transaction",
-                                      overflow: TextOverflow.ellipsis,
-                                      style: txStyle12,
-                                    ),
-                                  ),
-
-                                  // Text("2/5", style: txStyle14,)
-                                ],
-                              ),
-                              Container(
-                                  height: 15,
-                                  width: 15,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border:
-                                          Border.all(color: appPrimaryColor)),
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.priority_high,
-                                      color: appPrimaryColor,
-                                      size: 10,
-                                    ),
-                                  ))
-                            ],
-                          ),
-                        ),
-                      ),
                       vertical30,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -3,6 +3,7 @@ import 'package:payprice/shared/colors.dart';
 import 'package:payprice/shared/size.dart';
 import 'package:payprice/shared/sizeConfig.dart';
 import 'package:payprice/shared/text_style.dart';
+import 'package:payprice/ui/features/home/home_screen.dart';
 import 'package:payprice/ui/features/login/login_screen.dart';
 import 'package:payprice/ui/features/signup/signup_screen.dart';
 import 'package:payprice/ui/widget/custom_button.dart';
@@ -67,7 +68,7 @@ class GetStartedScreen extends StatelessWidget {
               buttonColor: Colors.transparent,
               textColor: themeProvider.isdark ? Colors.white : appPrimaryColor,
               onTap: () {
-                Get.to(LoginScreen());
+                Get.to(HomeScreen());
               },
             ),
             vertical5s,

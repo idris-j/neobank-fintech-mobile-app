@@ -75,7 +75,7 @@ class _NFCScreenState extends State<NFCScreen> {
             ),
             vertical10,
             Text(
-              "A secure method for charging users through their debit cards.",
+              "A secure method for taking contacless payment using your smartphone.",
               style: txStyle14,
             ),
             vertical30,
@@ -92,7 +92,7 @@ class _NFCScreenState extends State<NFCScreen> {
                         focusNode: myFocusNode,
                         textAlign: TextAlign.center,
                         cursorColor: appPrimaryColor,
-                        style: txStyle27Bold,
+                        style: txStyle27BoldNew,
                         keyboardType: TextInputType.number,
                         // controller: amountController,
                         inputFormatters: [MoneyFormatter()],
@@ -102,8 +102,8 @@ class _NFCScreenState extends State<NFCScreen> {
                         // validator: (value) => userProv.validateAmount(value!),
                         decoration: InputDecoration(
                           // prefixText: "₦",
-                          hintText: '₦5000',
-                          hintStyle: txStyle27Bold.copyWith(
+                          hintText: '£50',
+                          hintStyle: txStyle27BoldNew.copyWith(
                               color: appPrimaryColor.withOpacity(0.2),
                               fontSize: 30),
                           border: InputBorder.none,
@@ -188,11 +188,12 @@ class _ReadCardScreenState extends State<ReadCardScreen> {
           ),
           vertical10,
           Text(
-            "Please request the customer's card and tap it against the back of your phone.",
+            "Please request the customer’s card and tap or swipe it across your smartphone.",
             style: txStyle14,
           ),
           vertical30,
-          Lottie.asset("asset/lottie/nfc.json", height: 300, width: 300),
+          Lottie.asset("asset/lottie/payprice-nfc-lottie.json",
+              height: 300, width: 300),
         ]),
       ),
     );

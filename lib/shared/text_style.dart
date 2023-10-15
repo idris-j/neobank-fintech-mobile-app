@@ -52,6 +52,7 @@ var txStyle25Bold = _createTextStyle(25, fontWeight: FontWeight.bold);
 var txStyle27 = _createTextStyle(27);
 
 var txStyle27Bold = _createTextStyle(15, fontWeight: FontWeight.bold);
+var txStyle27BoldNew = _createTextStyle(27, fontWeight: FontWeight.bold);
 
 //////////////////
 
