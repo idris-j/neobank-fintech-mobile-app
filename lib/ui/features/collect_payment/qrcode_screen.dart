@@ -217,7 +217,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                               focusNode: myFocusNode,
                               textAlign: TextAlign.center,
                               cursorColor: appPrimaryColor,
-                              style: txStyle27Bold,
+                              style: txStyle27BoldNew,
                               keyboardType: TextInputType.number,
                               // controller: amountController,
                               inputFormatters: [MoneyFormatter()],
@@ -228,7 +228,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                               // validator: (value) => userProv.validateAmount(value!),
                               decoration: InputDecoration(
                                 // prefixText: "₦",
-                                hintText: '₦5000',
+                                hintText: '£50',
                                 hintStyle: txStyle27Bold.copyWith(
                                     color: appPrimaryColor.withOpacity(0.2),
                                     fontSize: 30),
@@ -348,7 +348,7 @@ class _GeneratedQrCodeScreenState extends State<GeneratedQrCodeScreen> {
                   // color: Theme.of(context).iconTheme.color,
 
                   //         ),
-                  
+
                   embeddedImageStyle: const QrEmbeddedImageStyle(),
                   data:
                       '${paymentProvider.generateLinkModel.body?.data?.authUrl}',

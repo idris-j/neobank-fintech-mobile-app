@@ -33,7 +33,7 @@ class _CollectPaymentScreenState extends State<CollectPaymentScreen> {
             ),
             vertical10,
             Text(
-              "Facilitate payment collection from the customer through our convenient channel.",
+              "Take payments using our collection of secure and convenient channels.",
               style: txStyle14,
             ),
             vertical30,

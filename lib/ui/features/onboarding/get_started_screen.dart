@@ -68,7 +68,7 @@ class GetStartedScreen extends StatelessWidget {
               buttonColor: Colors.transparent,
               textColor: themeProvider.isdark ? Colors.white : appPrimaryColor,
               onTap: () {
-                Get.to(HomeScreen());
+                Get.to(LoginScreen());
               },
             ),
             vertical5s,

@@ -166,26 +166,26 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      vertical30,
+                      vertical10,
                       vertical30,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Payment History",
-                            style: txStyle14Bold,
+                            "Cash Inflow",
+                            style: txStyle12Bold,
                           ),
                           Row(
                             children: [
                               Text(
                                 "See more",
-                                style: txStyle12.copyWith(color: greyColor),
+                                style: txStyle10.copyWith(color: greyColor),
                               ),
                               horizontalx5,
                               Icon(
                                 Icons.arrow_forward_ios,
                                 color: greyColor,
-                                size: 10,
+                                size: 8,
                               )
                             ],
                           ),
@@ -204,15 +204,16 @@ class HomeScreen extends StatelessWidget {
                                   Container(
                                     decoration: BoxDecoration(
                                         // shape: BoxShape.circle,
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius:
+                                            BorderRadius.circular(300),
                                         border:
                                             Border.all(color: appPrimaryColor)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(5),
                                       child: SvgPicture.asset(
-                                        "asset/svgs/link.svg",
-                                        height: 20,
-                                        width: 20,
+                                        "asset/svgs/link.svg", //should be images from inflow
+                                        height: 15,
+                                        width: 15,
                                       ),
                                     ),
                                   ),
@@ -223,12 +224,82 @@ class HomeScreen extends StatelessWidget {
                                     children: [
                                       Text(
                                         convertStringToCurrency("5000"),
-                                        style: txStyle12Bold,
+                                        style: txStyle10Bold,
                                       ),
                                       vertical5,
                                       Text(
                                         "${convertDateTimeDisplay(DateTime.now().toString())} • ${convertTimeDisplay(DateTime.now().toString())}",
-                                        style: txStyle12,
+                                        style: txStyle10,
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            );
+                          }),
+                      vertical15,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Cash Outflow",
+                            style: txStyle12Bold,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "See more",
+                                style: txStyle10.copyWith(color: greyColor),
+                              ),
+                              horizontalx5,
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: greyColor,
+                                size: 8,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      vertical20,
+                      ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: 3,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        // shape: BoxShape.circle,
+                                        borderRadius:
+                                            BorderRadius.circular(300),
+                                        border:
+                                            Border.all(color: appPrimaryColor)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5),
+                                      child: SvgPicture.asset(
+                                        "asset/svgs/link.svg", //should be images from inflow
+                                        height: 15,
+                                        width: 15,
+                                      ),
+                                    ),
+                                  ),
+                                  horizontalx10,
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        convertStringToCurrency("5000"),
+                                        style: txStyle10Bold,
+                                      ),
+                                      vertical5,
+                                      Text(
+                                        "${convertDateTimeDisplay(DateTime.now().toString())} • ${convertTimeDisplay(DateTime.now().toString())}",
+                                        style: txStyle10,
                                       )
                                     ],
                                   )
