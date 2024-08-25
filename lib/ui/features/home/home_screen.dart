@@ -10,10 +10,24 @@ import 'package:jeemo_pay/shared/text_style.dart';
 import 'package:jeemo_pay/ui/features/collect_payment/collect_payment_screen.dart';
 import 'package:jeemo_pay/ui/widget/utils.dart';
 import 'package:provider/provider.dart';
-import 'package:lottie/lottie.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    // Handle navigation based on the index here
+    // Example: Get.to(PageForSelectedTab());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -320,35 +334,34 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildBottomNavItem(Icons.home, 'Home'),
-            _buildBottomNavItem(Icons.savings, 'Savings'),
-            _buildBottomNavItem(Icons.send, 'Transfer'),
-            _buildBottomNavItem(Icons.article, 'Lifestyle'),
-            _buildBottomNavItem(Icons.account_circle, 'Account'),
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          _buildBottomNavItem(Icons.home, 'Home', 0),
+          _buildBottomNavItem(Icons.savings, 'Savings', 1),
+          _buildBottomNavItem(Icons.send, 'Transfer', 2),
+          _buildBottomNavItem(Icons.article, 'Lifestyle', 3),
+          _buildBottomNavItem(Icons.account_circle, 'Account', 4),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
 
-  Widget _buildBottomNavItem(IconData icon, String label) {
-    return Expanded(
-      child: InkWell(
-        onTap: () {
-          // Handle navigation here
-        },
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 24.0, color: Colors.black),
-            Text(label, style: TextStyle(fontSize: 12.0, color: Colors.black)),
-          ],
+  BottomNavigationBarItem _buildBottomNavItem(
+      IconData icon, String label, int index) {
+    return BottomNavigationBarItem(
+      icon: AnimatedSwitcher(
+        duration: Duration(milliseconds: 300),
+        child: Icon(
+          icon,
+          key: ValueKey<int>(index),
+          color: _selectedIndex == index ? appPrimaryColor : Colors.black,
+          size: 24.0,
         ),
       ),
+      label: label,
     );
   }
 }
