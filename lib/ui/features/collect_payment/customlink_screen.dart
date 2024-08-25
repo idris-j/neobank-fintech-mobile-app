@@ -1,16 +1,16 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/shared_utils.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/collect_payment/payment_repository.dart';
-import 'package:payprice/ui/widget/custom_app_bar.dart';
-import 'package:payprice/ui/widget/custom_button.dart';
-import 'package:payprice/ui/widget/custom_button_load.dart';
-import 'package:payprice/ui/widget/custom_form.dart';
-import 'package:payprice/ui/widget/money_formatter_widget.dart';
-import 'package:payprice/ui/widget/utils.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/shared_utils.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/collect_payment/payment_repository.dart';
+import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
+import 'package:jeemo_pay/ui/widget/custom_button.dart';
+import 'package:jeemo_pay/ui/widget/custom_button_load.dart';
+import 'package:jeemo_pay/ui/widget/custom_form.dart';
+import 'package:jeemo_pay/ui/widget/money_formatter_widget.dart';
+import 'package:jeemo_pay/ui/widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
@@ -246,7 +246,7 @@ class _GeneratedLinkScreenState extends State<GeneratedLinkScreen> {
                       InkWell(
                         onTap: () {
                           Share.share(
-                              "Hello there 👋, please make a payment of ${convertStringToCurrency(paymentProvider.amountController.text.replaceAll(",", ""))} using this link \n${paymentProvider.generateLinkModel.body?.data?.authUrl} \n\n powered by payprice");
+                              "Hello there 👋, please make a payment of ${convertStringToCurrency(paymentProvider.amountController.text.replaceAll(",", ""))} using this link \n${paymentProvider.generateLinkModel.body?.data?.authUrl} \n\n powered by jeemo_pay");
                         },
                         child: const Icon(Icons.share_outlined,
                             color: appPrimaryColor, size: 18),

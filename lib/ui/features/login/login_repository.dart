@@ -1,10 +1,10 @@
 import 'dart:developer';
 
-import 'package:payprice/core/data_models/login_model.dart';
-import 'package:payprice/shared/cache.dart';
-import 'package:payprice/shared/shared_utils.dart';
-import 'package:payprice/shared/validator.dart';
-import 'package:payprice/shared/view_state.dart';
+import 'package:jeemo_pay/core/data_models/login_model.dart';
+import 'package:jeemo_pay/shared/cache.dart';
+import 'package:jeemo_pay/shared/shared_utils.dart';
+import 'package:jeemo_pay/shared/validator.dart';
+import 'package:jeemo_pay/shared/view_state.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/api/api_utils/network_exception.dart';

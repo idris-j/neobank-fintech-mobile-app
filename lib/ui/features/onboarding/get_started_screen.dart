@@ -1,11 +1,12 @@
-import 'package:payprice/services/theme_provider.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/login/login_screen.dart';
-import 'package:payprice/ui/features/signup/signup_screen.dart';
-import 'package:payprice/ui/widget/custom_button.dart';
+import 'package:jeemo_pay/services/theme_provider.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/home/home_screen.dart';
+import 'package:jeemo_pay/ui/features/login/login_screen.dart';
+import 'package:jeemo_pay/ui/features/signup/signup_screen.dart';
+import 'package:jeemo_pay/ui/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:lottie/lottie.dart';
@@ -19,14 +20,6 @@ class GetStartedScreen extends StatelessWidget {
     List<GetStartedItem> items = [
       GetStartedItem("asset/lottie/getStarted.json",
           "Revolutionise  your business, cut down overhead cost", true),
-      GetStartedItem(
-          "asset/lottie/eco_friendly.json",
-          "Embrace Greener Payments with payprice: Redefining Transactions for a Sustainable Future!",
-          false),
-      GetStartedItem(
-          "asset/lottie/diversity.json",
-          "Secure Multiplicity: Elevate Payment Collection with Unparalleled Security.",
-          false),
     ];
     final themeProvider = Provider.of<ThemeProvider>(context);
 
@@ -44,7 +37,7 @@ class GetStartedScreen extends StatelessWidget {
                         children: [
                           Container(
                               decoration: BoxDecoration(
-                                  color: Color(0xFFE0F4E9),
+                                  color: Color(0xFFFFFFFF),
                                   shape: BoxShape.circle),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -71,11 +64,11 @@ class GetStartedScreen extends StatelessWidget {
             vertical2s,
             CustomButton(
               label: "Login",
-              borderColor: appPrimaryColor,
+              borderColor: Colors.white,
               buttonColor: Colors.transparent,
               textColor: themeProvider.isdark ? Colors.white : appPrimaryColor,
               onTap: () {
-                Get.to(LoginScreen());
+                Get.to(HomeScreen());
               },
             ),
             vertical5s,

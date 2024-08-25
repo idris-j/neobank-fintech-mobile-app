@@ -1,16 +1,16 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/shared_utils.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/collect_payment/payment_repository.dart';
-import 'package:payprice/ui/widget/custom_app_bar.dart';
-import 'package:payprice/ui/widget/custom_button.dart';
-import 'package:payprice/ui/widget/custom_button_load.dart';
-import 'package:payprice/ui/widget/custom_form.dart';
-import 'package:payprice/ui/widget/money_formatter_widget.dart';
-import 'package:payprice/ui/widget/utils.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/shared_utils.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/collect_payment/payment_repository.dart';
+import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
+import 'package:jeemo_pay/ui/widget/custom_button.dart';
+import 'package:jeemo_pay/ui/widget/custom_button_load.dart';
+import 'package:jeemo_pay/ui/widget/custom_form.dart';
+import 'package:jeemo_pay/ui/widget/money_formatter_widget.dart';
+import 'package:jeemo_pay/ui/widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -217,7 +217,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                               focusNode: myFocusNode,
                               textAlign: TextAlign.center,
                               cursorColor: appPrimaryColor,
-                              style: txStyle27Bold,
+                              style: txStyle27BoldNew,
                               keyboardType: TextInputType.number,
                               // controller: amountController,
                               inputFormatters: [MoneyFormatter()],
@@ -228,7 +228,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                               // validator: (value) => userProv.validateAmount(value!),
                               decoration: InputDecoration(
                                 // prefixText: "₦",
-                                hintText: '₦5000',
+                                hintText: '£50',
                                 hintStyle: txStyle27Bold.copyWith(
                                     color: appPrimaryColor.withOpacity(0.2),
                                     fontSize: 30),
@@ -348,7 +348,7 @@ class _GeneratedQrCodeScreenState extends State<GeneratedQrCodeScreen> {
                   // color: Theme.of(context).iconTheme.color,
 
                   //         ),
-                  
+
                   embeddedImageStyle: const QrEmbeddedImageStyle(),
                   data:
                       '${paymentProvider.generateLinkModel.body?.data?.authUrl}',

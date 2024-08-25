@@ -1,11 +1,11 @@
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/signup/otp_screen.dart';
-import 'package:payprice/ui/features/signup/signup_repository.dart';
-import 'package:payprice/ui/widget/custom_app_bar.dart';
-import 'package:payprice/ui/widget/custom_button_load.dart';
-import 'package:payprice/ui/widget/custom_form.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/signup/otp_screen.dart';
+import 'package:jeemo_pay/ui/features/signup/signup_repository.dart';
+import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
+import 'package:jeemo_pay/ui/widget/custom_button_load.dart';
+import 'package:jeemo_pay/ui/widget/custom_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -95,13 +95,13 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                   userProv: signUpProvider.state,
                   onTap: signUpProvider.passwordCompleted
                       ? () async {
-                            if (!_key.currentState!.validate()) return;
-      
+                          if (!_key.currentState!.validate()) return;
+
                           bool res = await signUpProvider.merchantSignUp();
-      
+
                           if (res) {
                             bool res1 = await signUpProvider.sendOtp();
-      
+
                             if (res1) {
                               Get.to(OTPVerificationScreen());
                             }

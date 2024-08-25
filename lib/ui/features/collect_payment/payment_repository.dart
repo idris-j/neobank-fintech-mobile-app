@@ -1,13 +1,13 @@
 import 'dart:developer';
 
-import 'package:payprice/core/api/api_utils/network_exception.dart';
-import 'package:payprice/core/api/user_api/user_api.dart';
-import 'package:payprice/core/data_models/generae_link_model.dart';
-import 'package:payprice/shared/base_view_model.dart';
-import 'package:payprice/shared/locator.dart';
-import 'package:payprice/shared/shared_utils.dart';
-import 'package:payprice/shared/validator.dart';
-import 'package:payprice/shared/view_state.dart';
+import 'package:jeemo_pay/core/api/api_utils/network_exception.dart';
+import 'package:jeemo_pay/core/api/user_api/user_api.dart';
+import 'package:jeemo_pay/core/data_models/generae_link_model.dart';
+import 'package:jeemo_pay/shared/base_view_model.dart';
+import 'package:jeemo_pay/shared/locator.dart';
+import 'package:jeemo_pay/shared/shared_utils.dart';
+import 'package:jeemo_pay/shared/validator.dart';
+import 'package:jeemo_pay/shared/view_state.dart';
 import 'package:flutter/material.dart';
 
 class PaymentProvider extends BaseNotifier with Validators {
@@ -21,7 +21,6 @@ class PaymentProvider extends BaseNotifier with Validators {
   bool nfcCompleted = false;
   TextEditingController nfcAmountController = TextEditingController();
   TextEditingController nfcOTPController = TextEditingController();
-
 
   checkNFCPayment() {
     if (nfcAmountController.text.isNotEmpty) {

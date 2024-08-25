@@ -1,4 +1,4 @@
-import 'package:payprice/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
 import 'package:flutter/material.dart';
 
 const Widget vertical2 = SizedBox(height: 2.0);

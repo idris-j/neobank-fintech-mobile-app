@@ -1,5 +1,5 @@
-import 'package:payprice/services/theme_provider.dart';
-import 'package:payprice/shared/colors.dart';
+import 'package:jeemo_pay/services/theme_provider.dart';
+import 'package:jeemo_pay/shared/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';

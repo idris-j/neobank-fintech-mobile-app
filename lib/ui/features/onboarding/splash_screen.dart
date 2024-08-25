@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:payprice/ui/features/onboarding/get_started_screen.dart';
+import 'package:jeemo_pay/ui/features/onboarding/branded_splash_screen.dart';
+import 'package:jeemo_pay/ui/features/onboarding/get_started_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import '../../../shared/sizeConfig.dart';
@@ -23,14 +24,14 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2), () async {
-      Get.off(GetStartedScreen());
+      Get.off(brandedSplashScreen());
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xfffaba46),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Center(
@@ -39,9 +40,9 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "asset/images/brixb_logo.png",
-                height: SizeConfig.heightOf(20),
-                width: SizeConfig.widthOf(20),
+                "asset/images/jeemo_pay-favicon.png",
+                height: SizeConfig.heightOf(25),
+                width: SizeConfig.widthOf(25),
               ),
             ],
           ),

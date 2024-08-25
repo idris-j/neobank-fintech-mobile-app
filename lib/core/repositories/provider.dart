@@ -1,8 +1,8 @@
-import 'package:payprice/core/repositoies/user_repository.dart';
-import 'package:payprice/services/theme_provider.dart';
-import 'package:payprice/ui/features/collect_payment/payment_repository.dart';
-import 'package:payprice/ui/features/login/login_repository.dart';
-import 'package:payprice/ui/features/signup/signup_repository.dart';
+import 'package:jeemo_pay/core/repositories/user_repository.dart';
+import 'package:jeemo_pay/services/theme_provider.dart';
+import 'package:jeemo_pay/ui/features/collect_payment/payment_repository.dart';
+import 'package:jeemo_pay/ui/features/login/login_repository.dart';
+import 'package:jeemo_pay/ui/features/signup/signup_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -16,6 +16,5 @@ class AppProviders {
     ListenableProvider(create: (_) => LoginProvider()),
     ListenableProvider(create: (_) => SignUpProvider()),
     ListenableProvider(create: (_) => PaymentProvider()),
-
   ];
 }

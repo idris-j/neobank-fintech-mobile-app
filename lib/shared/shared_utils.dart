@@ -1,5 +1,5 @@
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/snackbar/snackbar_controller.dart';

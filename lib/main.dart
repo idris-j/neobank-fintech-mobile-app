@@ -1,8 +1,8 @@
-import 'package:payprice/core/repositoies/provider.dart';
-import 'package:payprice/services/theme_provider.dart';
-import 'package:payprice/shared/cache.dart';
-import 'package:payprice/shared/locator.dart';
-import 'package:payprice/ui/features/onboarding/splash_screen.dart';
+import 'package:jeemo_pay/core/repositories/provider.dart';
+import 'package:jeemo_pay/services/theme_provider.dart';
+import 'package:jeemo_pay/shared/cache.dart';
+import 'package:jeemo_pay/shared/locator.dart';
+import 'package:jeemo_pay/ui/features/onboarding/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';

@@ -1,13 +1,13 @@
-import 'package:payprice/shared/cache.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/signup/complete_signup_screen.dart';
-import 'package:payprice/ui/features/signup/signup_repository.dart';
-import 'package:payprice/ui/widget/custom_app_bar.dart';
-import 'package:payprice/ui/widget/custom_button_load.dart';
-import 'package:payprice/ui/widget/pinCode_field.dart';
+import 'package:jeemo_pay/shared/cache.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/signup/complete_signup_screen.dart';
+import 'package:jeemo_pay/ui/features/signup/signup_repository.dart';
+import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
+import 'package:jeemo_pay/ui/widget/custom_button_load.dart';
+import 'package:jeemo_pay/ui/widget/pinCode_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

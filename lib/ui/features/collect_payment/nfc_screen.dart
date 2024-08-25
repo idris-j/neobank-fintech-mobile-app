@@ -1,17 +1,17 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/shared_utils.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/collect_payment/payment_repository.dart';
-import 'package:payprice/ui/widget/custom_app_bar.dart';
-import 'package:payprice/ui/widget/custom_button.dart';
-import 'package:payprice/ui/widget/custom_button_load.dart';
-import 'package:payprice/ui/widget/custom_form.dart';
-import 'package:payprice/ui/widget/money_formatter_widget.dart';
-import 'package:payprice/ui/widget/pinCode_field%20copy.dart';
-import 'package:payprice/ui/widget/utils.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/shared_utils.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/collect_payment/payment_repository.dart';
+import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
+import 'package:jeemo_pay/ui/widget/custom_button.dart';
+import 'package:jeemo_pay/ui/widget/custom_button_load.dart';
+import 'package:jeemo_pay/ui/widget/custom_form.dart';
+import 'package:jeemo_pay/ui/widget/money_formatter_widget.dart';
+import 'package:jeemo_pay/ui/widget/pinCode_field%20copy.dart';
+import 'package:jeemo_pay/ui/widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
@@ -75,7 +75,7 @@ class _NFCScreenState extends State<NFCScreen> {
             ),
             vertical10,
             Text(
-              "A secure method for charging users through their debit cards.",
+              "A secure method for taking contacless payment using your smartphone.",
               style: txStyle14,
             ),
             vertical30,
@@ -92,7 +92,7 @@ class _NFCScreenState extends State<NFCScreen> {
                         focusNode: myFocusNode,
                         textAlign: TextAlign.center,
                         cursorColor: appPrimaryColor,
-                        style: txStyle27Bold,
+                        style: txStyle27BoldNew,
                         keyboardType: TextInputType.number,
                         // controller: amountController,
                         inputFormatters: [MoneyFormatter()],
@@ -102,8 +102,8 @@ class _NFCScreenState extends State<NFCScreen> {
                         // validator: (value) => userProv.validateAmount(value!),
                         decoration: InputDecoration(
                           // prefixText: "₦",
-                          hintText: '₦5000',
-                          hintStyle: txStyle27Bold.copyWith(
+                          hintText: '£50',
+                          hintStyle: txStyle27BoldNew.copyWith(
                               color: appPrimaryColor.withOpacity(0.2),
                               fontSize: 30),
                           border: InputBorder.none,
@@ -188,11 +188,12 @@ class _ReadCardScreenState extends State<ReadCardScreen> {
           ),
           vertical10,
           Text(
-            "Please request the customer's card and tap it against the back of your phone.",
+            "Please request the customer’s card and tap or swipe it across your smartphone.",
             style: txStyle14,
           ),
           vertical30,
-          Lottie.asset("asset/lottie/nfc.json", height: 300, width: 300),
+          Lottie.asset("asset/lottie/jeemo_pay-nfc-lottie.json",
+              height: 300, width: 300),
         ]),
       ),
     );

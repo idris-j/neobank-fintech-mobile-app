@@ -1,7 +1,7 @@
-import 'package:payprice/core/repositoies/user_repository.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/ui/features/settings/setting_screen.dart';
-import 'package:payprice/ui/widget/custom_network_image.dart';
+import 'package:jeemo_pay/core/repositories/user_repository.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/ui/features/settings/setting_screen.dart';
+import 'package:jeemo_pay/ui/widget/custom_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

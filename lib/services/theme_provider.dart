@@ -1,4 +1,4 @@
-import 'package:payprice/shared/colors.dart';
+import 'package:jeemo_pay/shared/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,8 +9,10 @@ class ThemeProvider extends ChangeNotifier {
 
   ThemeProvider(bool isDark) {
     if (isDark) {
-      toggleToDarkTheme();
-      isdark = true;
+      //toggleToDarkTheme();
+      //isdark = true;
+      toggleToLightTheme();
+      isdark = false;
       notifyListeners();
     } else {
       toggleToLightTheme();
@@ -38,8 +40,8 @@ class ThemeProvider extends ChangeNotifier {
 }
 
 final ThemeData appThemeLight = ThemeData(
-  primaryColor: const Color(0xFF09414A),
-  scaffoldBackgroundColor: const Color(0xFFE0F4E9),
+  primaryColor: const Color(0xFFFABA46),
+  scaffoldBackgroundColor: const Color(0xFFFFFFFF),
   colorScheme: const ColorScheme.light(
     brightness: Brightness.light,
     background: Colors.white,
@@ -55,8 +57,8 @@ final ThemeData appThemeLight = ThemeData(
 );
 
 final ThemeData appThemeDark = ThemeData(
-  scaffoldBackgroundColor: const Color(0xFF051F2D),
-  primaryColor: const Color(0xFF09414A),
+  scaffoldBackgroundColor: Color.fromARGB(255, 0, 0, 0),
+  primaryColor: Color.fromARGB(255, 0, 0, 0),
   colorScheme: const ColorScheme.dark(
       brightness: Brightness.dark, background: Color(0xFF27374D)),
   textSelectionTheme: TextSelectionThemeData(

@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/constant.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/constant.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
@@ -37,10 +37,11 @@ class _CustomButtonState extends State<CustomButton> {
     return InkWell(
       onTap: widget.onTap,
       child: Container(
-        height: widget.height ?? 45,
+        height: widget.height ?? 60,
+        width: 350,
         decoration: BoxDecoration(
             color: widget.buttonColor ?? appPrimaryColor,
-            borderRadius: KBORDERRADIUS,
+            borderRadius: BUTTONBORDERRADIUS,
             border: Border.all(color: widget.borderColor ?? appPrimaryColor)),
         child: Center(
           child: Text(
