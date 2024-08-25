@@ -1,12 +1,12 @@
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/login/login_screen.dart';
-import 'package:payprice/ui/features/signup/create_password_screen.dart';
-import 'package:payprice/ui/features/signup/signup_repository.dart';
-import 'package:payprice/ui/widget/custom_app_bar.dart';
-import 'package:payprice/ui/widget/custom_button_load.dart';
-import 'package:payprice/ui/widget/custom_form.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/login/login_screen.dart';
+import 'package:jeemo_pay/ui/features/signup/create_password_screen.dart';
+import 'package:jeemo_pay/ui/features/signup/signup_repository.dart';
+import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
+import 'package:jeemo_pay/ui/widget/custom_button_load.dart';
+import 'package:jeemo_pay/ui/widget/custom_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -53,7 +53,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                "asset/images/payprice-logo-yellow.png",
+                "asset/images/jeemo_pay-logo-yellow.png",
                 height: 50,
                 width: 50,
               ),

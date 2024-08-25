@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:payprice/core/api/api_utils/api_routes.dart';
-import 'package:payprice/core/data_models/login_model.dart';
-import 'package:payprice/shared/cache.dart';
+import 'package:jeemo_pay/core/api/api_utils/api_routes.dart';
+import 'package:jeemo_pay/core/data_models/login_model.dart';
+import 'package:jeemo_pay/shared/cache.dart';
 
 import '../../../shared/locator.dart';
 import '../../data_models/api_response.dart';

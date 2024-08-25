@@ -1,15 +1,16 @@
-import 'package:payprice/core/repositoies/user_repository.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/constant.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/collect_payment/collect_payment_screen.dart';
-import 'package:payprice/ui/widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
+import 'package:jeemo_pay/core/repositories/user_repository.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/constant.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/collect_payment/collect_payment_screen.dart';
+import 'package:jeemo_pay/ui/widget/utils.dart';
 import 'package:provider/provider.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -34,18 +35,17 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         getGreeting(),
-                        style: txStyle25Bold,
+                        style: txStyle25Bold.copyWith(color: appPrimaryColor),
                       ),
                       Text(
                         userProvider.userProfileModel.data?.lastName ?? "User",
-                        style: txStyle25Bold,
+                        style: txStyle25Bold.copyWith(color: appSecondaryColor),
                       ),
                     ],
                   ),
                   Container(
                     width: SizeConfig.widthOf(30),
                     decoration: BoxDecoration(
-                      // color: greyColor,
                       border: Border.all(color: greyColor),
                       borderRadius: KBORDERRADIUS,
                     ),
@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               vertical5,
-              Divider(),
+              Divider(color: greyColor),
               vertical20,
               Expanded(
                 child: RefreshIndicator(
@@ -85,7 +85,8 @@ class HomeScreen extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                             border: Border.all(color: appPrimaryColor),
-                            borderRadius: KBORDERRADIUS),
+                            borderRadius: KBORDERRADIUS,
+                            color: lightGray),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 20),
@@ -94,12 +95,14 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "Your total balance",
-                                style: txStyle12,
+                                style: txStyle12.copyWith(
+                                    color: appSecondaryColor),
                               ),
                               vertical5,
                               Text(
                                 convertStringToCurrency("1350000"),
-                                style: txStyle25Bold,
+                                style: txStyle25Bold.copyWith(
+                                    color: appPrimaryColor),
                               ),
                               vertical10,
                               SizedBox(
@@ -108,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                                   scrollDirection: Axis.horizontal,
                                   children: [
                                     PaymentBreakdownWidget(
-                                      image: "asset/svgs/qrcode.svg",
+                                      image: "asset/svgs/nfc.svg",
                                       value: convertStringToCurrency("25000"),
                                     ),
                                     horizontalx10,
@@ -125,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                                     PaymentBreakdownWidget(
                                       image: "asset/svgs/pig-money.svg",
                                       value: convertStringToCurrency("17000"),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),
@@ -166,14 +169,15 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      vertical10,
+                      vertical30,
                       vertical30,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "Cash Inflow",
-                            style: txStyle12Bold,
+                            style:
+                                txStyle12Bold.copyWith(color: appPrimaryColor),
                           ),
                           Row(
                             children: [
@@ -186,64 +190,65 @@ class HomeScreen extends StatelessWidget {
                                 Icons.arrow_forward_ios,
                                 color: greyColor,
                                 size: 8,
-                              )
+                              ),
                             ],
                           ),
                         ],
                       ),
                       vertical20,
                       ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        // shape: BoxShape.circle,
-                                        borderRadius:
-                                            BorderRadius.circular(300),
-                                        border:
-                                            Border.all(color: appPrimaryColor)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5),
-                                      child: SvgPicture.asset(
-                                        "asset/svgs/link.svg", //should be images from inflow
-                                        height: 15,
-                                        width: 15,
-                                      ),
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(300),
+                                      border:
+                                          Border.all(color: appPrimaryColor)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: SvgPicture.asset(
+                                      "asset/svgs/link.svg",
+                                      height: 15,
+                                      width: 15,
                                     ),
                                   ),
-                                  horizontalx10,
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        convertStringToCurrency("5000"),
-                                        style: txStyle10Bold,
-                                      ),
-                                      vertical5,
-                                      Text(
-                                        "${convertDateTimeDisplay(DateTime.now().toString())} • ${convertTimeDisplay(DateTime.now().toString())}",
-                                        style: txStyle10,
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            );
-                          }),
+                                ),
+                                horizontalx10,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      convertStringToCurrency("5000"),
+                                      style: txStyle10Bold.copyWith(
+                                          color: appPrimaryColor),
+                                    ),
+                                    vertical5,
+                                    Text(
+                                      "${convertDateTimeDisplay(DateTime.now().toString())} • ${convertTimeDisplay(DateTime.now().toString())}",
+                                      style: txStyle10.copyWith(
+                                          color: appSecondaryColor),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                       vertical15,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "Cash Outflow",
-                            style: txStyle12Bold,
+                            style:
+                                txStyle12Bold.copyWith(color: appPrimaryColor),
                           ),
                           Row(
                             children: [
@@ -256,63 +261,92 @@ class HomeScreen extends StatelessWidget {
                                 Icons.arrow_forward_ios,
                                 color: greyColor,
                                 size: 8,
-                              )
+                              ),
                             ],
                           ),
                         ],
                       ),
                       vertical20,
                       ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        // shape: BoxShape.circle,
-                                        borderRadius:
-                                            BorderRadius.circular(300),
-                                        border:
-                                            Border.all(color: appPrimaryColor)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5),
-                                      child: SvgPicture.asset(
-                                        "asset/svgs/link.svg", //should be images from inflow
-                                        height: 15,
-                                        width: 15,
-                                      ),
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(300),
+                                      border:
+                                          Border.all(color: appPrimaryColor)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: SvgPicture.asset(
+                                      "asset/svgs/link.svg",
+                                      height: 15,
+                                      width: 15,
                                     ),
                                   ),
-                                  horizontalx10,
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        convertStringToCurrency("5000"),
-                                        style: txStyle10Bold,
-                                      ),
-                                      vertical5,
-                                      Text(
-                                        "${convertDateTimeDisplay(DateTime.now().toString())} • ${convertTimeDisplay(DateTime.now().toString())}",
-                                        style: txStyle10,
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            );
-                          }),
+                                ),
+                                horizontalx10,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      convertStringToCurrency("5000"),
+                                      style: txStyle10Bold.copyWith(
+                                          color: appPrimaryColor),
+                                    ),
+                                    vertical5,
+                                    Text(
+                                      "${convertDateTimeDisplay(DateTime.now().toString())} • ${convertTimeDisplay(DateTime.now().toString())}",
+                                      style: txStyle10.copyWith(
+                                          color: appSecondaryColor),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildBottomNavItem(Icons.home, 'Home'),
+            _buildBottomNavItem(Icons.savings, 'Savings'),
+            _buildBottomNavItem(Icons.send, 'Transfer'),
+            _buildBottomNavItem(Icons.article, 'Lifestyle'),
+            _buildBottomNavItem(Icons.account_circle, 'Account'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomNavItem(IconData icon, String label) {
+    return Expanded(
+      child: InkWell(
+        onTap: () {
+          // Handle navigation here
+        },
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 24.0, color: Colors.black),
+            Text(label, style: TextStyle(fontSize: 12.0, color: Colors.black)),
+          ],
         ),
       ),
     );
@@ -342,7 +376,7 @@ class PaymentBreakdownWidget extends StatelessWidget {
         horizontalx5,
         Text(
           value,
-          style: txStyle12Bold,
+          style: txStyle12Bold.copyWith(color: appPrimaryColor),
         ),
       ],
     );
@@ -370,7 +404,8 @@ class quickActionWidget extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
                 border: Border.all(color: appPrimaryColor),
-                borderRadius: KBORDERRADIUS),
+                borderRadius: KBORDERRADIUS,
+                color: lightGray),
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Center(
@@ -386,7 +421,7 @@ class quickActionWidget extends StatelessWidget {
           vertical10,
           Text(
             title,
-            style: txStyle13,
+            style: txStyle13.copyWith(color: appPrimaryColor),
             textAlign: TextAlign.center,
           )
         ],
@@ -394,38 +429,3 @@ class quickActionWidget extends StatelessWidget {
     );
   }
 }
-
-
-
-// class LoanProgressWidget extends StatelessWidget {
-//   final String total;
-//   final String amountPaid;
-
-//   const LoanProgressWidget(
-//       {super.key, required this.total, required this.amountPaid});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         Row(
-//           children: [
-//             Text(
-//               "${convertStringToCurrency(amountPaid.toString())} / ",
-//               style: txStyle12,
-//             ),
-//             Text(convertStringToCurrency(total.toString()), style: txStyle12),
-//           ],
-//         ),
-//         vertical5,
-//         FAProgressBar(
-//           currentValue: double.tryParse(amountPaid)!,
-//           maxValue: double.tryParse(total)!,
-//           size: 10,
-//           border: Border.all(color: appPrimaryColor.withOpacity(.5)),
-//           progressColor: Colors.green,
-//         )
-//       ],
-//     );
-//   }
-// }

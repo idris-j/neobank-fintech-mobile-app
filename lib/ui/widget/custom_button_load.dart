@@ -2,12 +2,12 @@
 
 import 'dart:io';
 
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/constant.dart';
-import 'package:payprice/shared/responsive_state.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/shared/view_state.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/constant.dart';
+import 'package:jeemo_pay/shared/responsive_state.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/shared/view_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

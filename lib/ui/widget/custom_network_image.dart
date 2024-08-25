@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:payprice/shared/colors.dart';
+import 'package:jeemo_pay/shared/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomNetworkImage extends StatelessWidget {

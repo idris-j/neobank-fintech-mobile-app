@@ -1,16 +1,16 @@
 import 'dart:io';
 
-import 'package:payprice/core/repositoies/user_repository.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/login/login_repository.dart';
-import 'package:payprice/ui/features/signup/signup_screen.dart';
-import 'package:payprice/ui/widget/custom_app_bar.dart';
-import 'package:payprice/ui/widget/custom_bottom_nav.dart';
-import 'package:payprice/ui/widget/custom_button_load.dart';
-import 'package:payprice/ui/widget/custom_form.dart';
+import 'package:jeemo_pay/core/repositories/user_repository.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/login/login_repository.dart';
+import 'package:jeemo_pay/ui/features/signup/signup_screen.dart';
+import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
+import 'package:jeemo_pay/ui/widget/custom_bottom_nav.dart';
+import 'package:jeemo_pay/ui/widget/custom_button_load.dart';
+import 'package:jeemo_pay/ui/widget/custom_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              "asset/images/payprice-logo-yellow.png",
+              "asset/images/jeemo_pay-logo-yellow.png",
               height: 50,
               width: 50,
             ),
@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
             vertical10,
             Center(
               child: Text(
-                "Securely login to your Payprice",
+                "Securely login to your jeemo_pay",
                 style: txStyle16,
               ),
             ),
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: 'New to payprice? ',
+                  text: 'New to jeemo_pay? ',
                   style: txStyle14.copyWith(
                       color: Theme.of(context).iconTheme.color),
                   children: <TextSpan>[

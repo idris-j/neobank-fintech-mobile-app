@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
-import 'package:payprice/services/theme_provider.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/ui/features/login/login_screen.dart';
-import 'package:payprice/ui/features/onboarding/get_started_screen.dart';
-import 'package:payprice/ui/widget/custom_button.dart';
+import 'package:jeemo_pay/services/theme_provider.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/ui/features/login/login_screen.dart';
+import 'package:jeemo_pay/ui/features/onboarding/get_started_screen.dart';
+import 'package:jeemo_pay/ui/widget/custom_button.dart';
 import 'package:provider/provider.dart';
 
 class AutocompleteDropDown extends StatefulWidget {
@@ -34,7 +34,7 @@ class _SimpleDropDownState extends State<AutocompleteDropDown> {
               children: [
                 Text(
                   "Selected Country : $_selectedItem",
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SizedBox(height: 20),
                 AutocompleteTextField(

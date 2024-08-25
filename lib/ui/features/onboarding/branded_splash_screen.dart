@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:payprice/ui/features/onboarding/get_started_screen.dart';
+import 'package:jeemo_pay/ui/features/onboarding/get_started_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:payprice/ui/features/onboarding/nation_choose.dart';
+import 'package:jeemo_pay/ui/features/onboarding/nation_choose.dart';
 import '../../../shared/sizeConfig.dart';
 
 class brandedSplashScreen extends StatefulWidget {
@@ -40,7 +40,7 @@ class _brandedSplashScreenState extends State<brandedSplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "asset/images/payprice-logo.png",
+                "asset/images/jeemo_pay-logo.png",
                 height: SizeConfig.heightOf(55),
                 width: SizeConfig.widthOf(55),
               ),

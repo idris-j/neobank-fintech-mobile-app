@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/constant.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/text_style.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/constant.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

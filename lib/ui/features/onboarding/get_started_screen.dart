@@ -1,12 +1,12 @@
-import 'package:payprice/services/theme_provider.dart';
-import 'package:payprice/shared/colors.dart';
-import 'package:payprice/shared/size.dart';
-import 'package:payprice/shared/sizeConfig.dart';
-import 'package:payprice/shared/text_style.dart';
-import 'package:payprice/ui/features/home/home_screen.dart';
-import 'package:payprice/ui/features/login/login_screen.dart';
-import 'package:payprice/ui/features/signup/signup_screen.dart';
-import 'package:payprice/ui/widget/custom_button.dart';
+import 'package:jeemo_pay/services/theme_provider.dart';
+import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/shared/size.dart';
+import 'package:jeemo_pay/shared/sizeConfig.dart';
+import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/features/home/home_screen.dart';
+import 'package:jeemo_pay/ui/features/login/login_screen.dart';
+import 'package:jeemo_pay/ui/features/signup/signup_screen.dart';
+import 'package:jeemo_pay/ui/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:lottie/lottie.dart';
@@ -68,7 +68,7 @@ class GetStartedScreen extends StatelessWidget {
               buttonColor: Colors.transparent,
               textColor: themeProvider.isdark ? Colors.white : appPrimaryColor,
               onTap: () {
-                Get.to(LoginScreen());
+                Get.to(HomeScreen());
               },
             ),
             vertical5s,
