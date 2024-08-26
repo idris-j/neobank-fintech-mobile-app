@@ -8,6 +8,7 @@ import 'package:jeemo_pay/ui/features/login/login_screen.dart';
 import 'package:jeemo_pay/ui/features/onboarding/get_started_screen.dart';
 import 'package:jeemo_pay/ui/widget/custom_button.dart';
 import 'package:provider/provider.dart';
+import 'package:lottie/lottie.dart'; // Import the Lottie package
 
 class AutocompleteDropDown extends StatefulWidget {
   const AutocompleteDropDown({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class AutocompleteDropDown extends StatefulWidget {
 class _SimpleDropDownState extends State<AutocompleteDropDown> {
   String _selectedItem = '';
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -32,6 +34,14 @@ class _SimpleDropDownState extends State<AutocompleteDropDown> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Add the Lottie animation
+                Lottie.asset(
+                  'asset/lottie/choose_location.json', // Path to your Lottie file
+                  width: 150,
+                  height: 150,
+                  fit: BoxFit.contain,
+                ),
+                const SizedBox(height: 20),
                 Text(
                   "Selected Country : $_selectedItem",
                   style: Theme.of(context).textTheme.headlineSmall,
@@ -60,7 +70,7 @@ class _SimpleDropDownState extends State<AutocompleteDropDown> {
                 CustomButton(
                   label: "Continue",
                   borderColor: Colors.white,
-                  buttonColor: Colors.black,
+                  buttonColor: customColor,
                   textColor: themeProvider.isdark ? Colors.white : Colors.white,
                   onTap: () {
                     Get.to(GetStartedScreen());

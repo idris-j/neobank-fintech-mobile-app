@@ -92,7 +92,7 @@ class _NFCScreenState extends State<NFCScreen> {
                         focusNode: myFocusNode,
                         textAlign: TextAlign.center,
                         cursorColor: appPrimaryColor,
-                        style: txStyle27BoldNew,
+                        style: txStyle27Bold,
                         keyboardType: TextInputType.number,
                         // controller: amountController,
                         inputFormatters: [MoneyFormatter()],
@@ -103,7 +103,7 @@ class _NFCScreenState extends State<NFCScreen> {
                         decoration: InputDecoration(
                           // prefixText: "₦",
                           hintText: '£50',
-                          hintStyle: txStyle27BoldNew.copyWith(
+                          hintStyle: txStyle27Bold.copyWith(
                               color: appPrimaryColor.withOpacity(0.2),
                               fontSize: 30),
                           border: InputBorder.none,

@@ -36,10 +36,10 @@ class CustomButtonLoad extends StatelessWidget {
     return InkWell(
       onTap: userProv == ViewState.Busy ? null : onTap,
       child: Container(
-        height: height ?? 60,
-        width: 350,
+        height: height ?? 50, // Reduced height
+        width: 250, // Reduced width
         decoration: BoxDecoration(
-          color: onTap == null ? Colors.black : buttonColor ?? appPrimaryColor,
+          color: onTap == null ? customColor : buttonColor ?? appPrimaryColor,
           border: Border.all(color: borderColor ?? Colors.transparent),
           borderRadius: BUTTONBORDERRADIUS,
         ),
@@ -50,8 +50,9 @@ class CustomButtonLoad extends StatelessWidget {
               label,
               textAlign: TextAlign.center,
               style: txStyle15.copyWith(
-                  color: textColor ?? Colors.black,
-                  fontWeight: FontWeight.w500),
+                  color: textColor ?? Colors.white,
+                  fontWeight: FontWeight.bold // Make the text bold
+                  ),
             ),
             busyWidget: SizedBox(
                 height: 20,

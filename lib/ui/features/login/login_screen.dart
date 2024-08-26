@@ -55,11 +55,6 @@ class _LoginScreenState extends State<LoginScreen> {
         child: ListView(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              "asset/images/jeemo_pay-logo-yellow.png",
-              height: 50,
-              width: 50,
-            ),
             vertical20,
             Center(
               child: Text(
@@ -70,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
             vertical10,
             Center(
               child: Text(
-                "Securely login to your jeemo_pay",
+                "Securely login to your jeemo_pay account",
                 style: txStyle16,
               ),
             ),
@@ -84,15 +79,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 validator: (value) => loginProvider.validatePhoneNumber(value!),
                 onChanged: (text) => loginProvider.checkLoginForm()),
             vertical15,
-            CustomTextField(
-                labelText: "Password",
-                obscureText: true,
-                controller: loginProvider.userPassword,
-                readOnly: loginProvider.disableTextField,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => loginProvider.validatePassword(value!),
-                onChanged: (text) => loginProvider.checkLoginForm()),
-            vertical50,
             Row(
               children: [
                 Expanded(
@@ -146,9 +132,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            vertical120,
-            vertical120,
-            vertical50,
             vertical50,
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

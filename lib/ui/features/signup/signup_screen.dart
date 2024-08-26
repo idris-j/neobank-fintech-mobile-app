@@ -52,11 +52,6 @@ class _SingUpScreenState extends State<SingUpScreen> {
           child: ListView(
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                "asset/images/jeemo_pay-logo-yellow.png",
-                height: 50,
-                width: 50,
-              ),
               vertical20,
               Center(
                 child: Text(
@@ -71,33 +66,6 @@ class _SingUpScreenState extends State<SingUpScreen> {
                   style: txStyle16,
                 ),
               ),
-              vertical30,
-              CustomTextField(
-                  labelText: "Full Name",
-                  //hintText: 'Full Name',
-                  controller: signUpProvider.firstName,
-                  // textInputType: TextInputType.number,
-                  readOnly: signUpProvider.disableTextField,
-                  validator: (value) => signUpProvider.validateName(value!),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  onChanged: (text) => signUpProvider.checkSignUp()),
-              vertical15,
-              CustomTextField(
-                  labelText: "Business Name",
-                  //hintText: 'Business Name',
-                  controller: signUpProvider.middleName,
-                  // textInputType: TextInputType.number,
-
-                  readOnly: signUpProvider.disableTextField),
-              vertical15,
-              CustomTextField(
-                  labelText: "Business Reg. No.",
-                  //hintText: 'Business Reg. No.',
-                  controller: signUpProvider.lastName,
-                  readOnly: signUpProvider.disableTextField,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) => signUpProvider.validateName(value!),
-                  onChanged: (text) => signUpProvider.checkSignUp()),
               vertical15,
               CustomTextField(
                   labelText: "Email",

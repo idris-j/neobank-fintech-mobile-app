@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AccountScreen extends StatelessWidget {
-  const AccountScreen({super.key});
+class UserAccountScreen extends StatelessWidget {
+  const UserAccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Account'),
+        title: Text('Send Money'),
       ),
       body: Center(
-        child: Text('Account Screen'),
+        child: Text('Send Money Screen'),
       ),
     );
   }

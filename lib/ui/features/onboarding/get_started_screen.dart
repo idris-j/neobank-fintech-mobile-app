@@ -19,7 +19,7 @@ class GetStartedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<GetStartedItem> items = [
       GetStartedItem("asset/lottie/getStarted.json",
-          "Revolutionise  your business, cut down overhead cost", true),
+          "Manage your finances! The right way!", true),
     ];
     final themeProvider = Provider.of<ThemeProvider>(context);
 
@@ -66,7 +66,7 @@ class GetStartedScreen extends StatelessWidget {
               label: "Login",
               borderColor: Colors.white,
               buttonColor: Colors.transparent,
-              textColor: themeProvider.isdark ? Colors.white : appPrimaryColor,
+              textColor: themeProvider.isdark ? Colors.white : Colors.black,
               onTap: () {
                 Get.to(HomeScreen());
               },

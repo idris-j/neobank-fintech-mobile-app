@@ -50,6 +50,8 @@ dependencies:
   share_plus: ^7.1.0
   shared_preferences: ^2.3.2
   smartlogger: ^1.1.4+1
+  font_awesome_flutter: ^10.7.0
+  material_design_icons_flutter: ^7.0.7296
 
 dev_dependencies:
   flutter_test:
@@ -88,8 +90,10 @@ flutter:
   # example:
   fonts:
     - family: Plus_Jakarta_Sans
+    - family: BrickSans
       fonts:
         - asset: asset/fonts/PlusJakartaSans-VariableFont_wght.ttf
+        - asset: asset/fonts/brick-sans/BrickSans-Bold.otf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:jeemo_pay/shared/colors.dart';
 import 'package:jeemo_pay/ui/features/onboarding/branded_splash_screen.dart';
 import 'package:jeemo_pay/ui/features/onboarding/get_started_screen.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfffaba46),
+      backgroundColor: customColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Center(

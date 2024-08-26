@@ -217,7 +217,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                               focusNode: myFocusNode,
                               textAlign: TextAlign.center,
                               cursorColor: appPrimaryColor,
-                              style: txStyle27BoldNew,
+                              style: txStyle27Bold,
                               keyboardType: TextInputType.number,
                               // controller: amountController,
                               inputFormatters: [MoneyFormatter()],

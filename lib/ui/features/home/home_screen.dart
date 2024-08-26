@@ -7,8 +7,23 @@ import 'package:jeemo_pay/shared/size.dart';
 import 'package:jeemo_pay/shared/sizeConfig.dart';
 import 'package:jeemo_pay/shared/text_style.dart';
 import 'package:jeemo_pay/ui/features/collect_payment/collect_payment_screen.dart';
+import 'package:jeemo_pay/ui/features/settings/setting_screen.dart';
+import 'package:jeemo_pay/ui/features/user/menu_screen.dart';
+import 'package:jeemo_pay/ui/widget/cash_inflow_widget.dart';
+import 'package:jeemo_pay/ui/widget/custom_network_image.dart';
+import 'package:jeemo_pay/ui/widget/home_card_section_widget.dart';
+import 'package:jeemo_pay/ui/widget/scrollable_balance_widget.dart';
 import 'package:jeemo_pay/ui/widget/utils.dart';
 import 'package:provider/provider.dart';
+import 'package:lottie/lottie.dart';
+import 'package:jeemo_pay/ui/widget/bottom_navigation_widget.dart';
+import 'package:jeemo_pay/ui/widget/pop_up_menu_widget.dart';
+
+// Import the new screens
+import 'package:jeemo_pay/ui/features/user/wallet_screen.dart';
+import 'package:jeemo_pay/ui/features/transfer_funds/send_money_screen.dart';
+import 'package:jeemo_pay/ui/features/user/transaction_history_screen.dart';
+import 'package:jeemo_pay/ui/features/user/user_account_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,411 +35,279 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
+  // Define the list of screens to display
+  late final List<Widget> _screens;
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      HomeContentScreen(
+          onPopupMenuSelected: _onPopupMenuSelected), // Pass the function
+      WalletScreen(), // Wallet content
+      SendMoneyScreen(), // Send money content
+      TransactionScreen(), // Transaction history content
+      UserAccountScreen(), // User account content
+    ];
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    // Handle navigation based on the index here
-    // Example: Get.to(PageForSelectedTab());
   }
+
+  void _onPopupMenuSelected(String value) {
+    switch (value) {
+      case 'Bank Details':
+        // Navigate to Bank Details screen
+        break;
+      case 'Transaction Statement':
+        // Navigate to Transaction Statement screen
+        break;
+      case 'Currency Converter':
+        // Navigate to Currency Converter screen
+        break;
+      case 'Add New Account':
+        // Navigate to Add New Account screen
+        break;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: IndexedStack(
+          index: _selectedIndex,
+          children: _screens,
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationWidget(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),
+    );
+  }
+}
+
+// This widget represents the original home screen content
+class HomeContentScreen extends StatelessWidget {
+  final Function(String) onPopupMenuSelected;
+
+  // Pass the callback as a parameter
+  const HomeContentScreen({required this.onPopupMenuSelected});
 
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
 
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthOf(5)),
-          child: Column(
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthOf(5)),
+      child: Column(
+        children: [
+          vertical20,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              vertical20,
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        getGreeting(),
-                        style: txStyle25Bold.copyWith(color: appPrimaryColor),
-                      ),
-                      Text(
-                        userProvider.userProfileModel.data?.lastName ?? "User",
-                        style: txStyle25Bold.copyWith(color: appSecondaryColor),
-                      ),
-                    ],
-                  ),
                   Container(
-                    width: SizeConfig.widthOf(30),
+                    width: 40.0, // Width of the circle
+                    height: 40.0, // Height of the circle
                     decoration: BoxDecoration(
-                      border: Border.all(color: greyColor),
-                      borderRadius: KBORDERRADIUS,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 5),
-                      child: Row(children: [
-                        Expanded(
-                          child: Text(
-                            userProvider.userProfileModel.data?.merchantId ??
-                                "loading...",
-                            style: txStyle12,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                      shape: BoxShape.circle,
+                      color: Colors.white, // White background
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: Offset(0, 3),
                         ),
-                        horizontalx5,
-                        Icon(
-                          Icons.copy,
-                          size: 15,
-                          color: appPrimaryColor,
-                        )
-                      ]),
+                      ],
                     ),
-                  )
+                    child: Center(
+                      child: IconButton(
+                        icon: Image.asset(
+                          'asset/images/jeemo_menu_icon.png', // Path to your image asset
+                          fit: BoxFit.contain,
+                          width: 20.0, // Set the size of the image here
+                          height: 20.0, // Set the size of the image here
+                        ),
+                        iconSize:
+                            20.0, // Set the size of the button (not the image)
+                        onPressed: () {
+                          // Handle menu button press
+                          Get.to(() => MenuScreen()); // Navigate to MenuScreen
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10), // Space between icon and text
+                  Text(
+                    "jeemo.io",
+                    style: TextStyle(
+                      fontFamily: 'Roboto', // Use the BrickSans font
+                      fontSize: 16.0, // Adjust font size as needed
+                      fontWeight: FontWeight.bold, // Use bold weight if desired
+                      color: Colors.black, // Adjust color if needed
+                    ),
+                  ),
                 ],
               ),
-              vertical5,
-              Divider(color: greyColor),
-              vertical20,
-              Expanded(
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    await userProvider.fetchUserProfile();
-                  },
-                  child: ListView(
-                    children: [
-                      // Available Balance Section
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white, // White background
-                          borderRadius:
-                              BorderRadius.circular(10), // Smooth border radius
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Your total balance",
-                                style: txStyle12.copyWith(
-                                    color: appSecondaryColor),
-                              ),
-                              vertical5,
-                              Text(
-                                convertStringToCurrency("1350000"),
-                                style: txStyle25Bold.copyWith(
-                                    color: appPrimaryColor),
-                              ),
-                              vertical10,
-                              SizedBox(
-                                height: 20,
-                                child: ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  children: [
-                                    PaymentBreakdownWidget(
-                                      icon: Icons.nfc,
-                                      value: convertStringToCurrency("25000"),
-                                    ),
-                                    horizontalx10,
-                                    PaymentBreakdownWidget(
-                                      icon: Icons.nfc,
-                                      value: convertStringToCurrency("15000"),
-                                    ),
-                                    horizontalx10,
-                                    PaymentBreakdownWidget(
-                                      icon: Icons.link,
-                                      value: convertStringToCurrency("57000"),
-                                    ),
-                                    horizontalx10,
-                                    PaymentBreakdownWidget(
-                                      icon: Icons.monetization_on,
-                                      value: convertStringToCurrency("17000"),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      vertical30,
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: SizeConfig.widthOf(10)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            quickActionWidget(
-                              title: "Add Money",
-                              icon: Icons.add_circle,
-                              onTap: () {},
-                            ),
-                            quickActionWidget(
-                              title: "Exchange",
-                              icon: Icons.swap_horiz,
-                              onTap: () {},
-                            ),
-                            quickActionWidget(
-                              title: "Loan",
-                              icon: Icons.money_off,
-                              onTap: () {},
-                            ),
-                            quickActionWidget(
-                              title: "More",
-                              icon: Icons.more_horiz,
-                              onTap: () {},
-                            ),
-                          ],
-                        ),
-                      ),
-                      vertical30,
-                      vertical30,
-                      // Cash Inflow Section
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white, // White background
-                          borderRadius:
-                              BorderRadius.circular(10), // Smooth border radius
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Cash Inflow",
-                                    style: txStyle12Bold.copyWith(
-                                        color: appPrimaryColor),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "See more",
-                                        style: txStyle10.copyWith(
-                                            color: greyColor),
-                                      ),
-                                      horizontalx5,
-                                      Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: greyColor,
-                                        size: 8,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              vertical20,
-                              ListView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: 3,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(bottom: 20),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: lightGray,
-                                              border: Border.all(
-                                                  color: appPrimaryColor)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(5),
-                                            child: Icon(
-                                              Icons.link,
-                                              size: 15,
-                                              color: appPrimaryColor,
-                                            ),
-                                          ),
-                                        ),
-                                        horizontalx10,
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              convertStringToCurrency("5000"),
-                                              style: txStyle10Bold.copyWith(
-                                                  color: appPrimaryColor),
-                                            ),
-                                            vertical5,
-                                            Text(
-                                              "${convertDateTimeDisplay(DateTime.now().toString())} • ${convertTimeDisplay(DateTime.now().toString())}",
-                                              style: txStyle10.copyWith(
-                                                  color: appSecondaryColor),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      vertical15,
-                      // Cash Outflow Section
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white, // White background
-                          borderRadius:
-                              BorderRadius.circular(10), // Smooth border radius
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Cash Outflow",
-                                    style: txStyle12Bold.copyWith(
-                                        color: appPrimaryColor),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "See more",
-                                        style: txStyle10.copyWith(
-                                            color: greyColor),
-                                      ),
-                                      horizontalx5,
-                                      Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: greyColor,
-                                        size: 8,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              vertical20,
-                              ListView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: 3,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(bottom: 20),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: lightGray,
-                                              border: Border.all(
-                                                  color: appPrimaryColor)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(5),
-                                            child: Icon(
-                                              Icons.link,
-                                              size: 15,
-                                              color: appPrimaryColor,
-                                            ),
-                                          ),
-                                        ),
-                                        horizontalx10,
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              convertStringToCurrency("5000"),
-                                              style: txStyle10Bold.copyWith(
-                                                  color: appPrimaryColor),
-                                            ),
-                                            vertical5,
-                                            Text(
-                                              "${convertDateTimeDisplay(DateTime.now().toString())} • ${convertTimeDisplay(DateTime.now().toString())}",
-                                              style: txStyle10.copyWith(
-                                                  color: appSecondaryColor),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => SettingScreen());
+                },
+                child: CircleAvatar(
+                  radius: 25,
+                  backgroundImage: NetworkImage(
+                    userProvider.userProfileModel.data?.profilePicture ??
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwsArWf2lZuLGqco6QoGM13keJb078XIgNWA&usqp=CAU",
                   ),
                 ),
               ),
             ],
           ),
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          _buildBottomNavItem(Icons.home, 'Home', 0),
-          _buildBottomNavItem(Icons.swap_horiz, 'Transfer', 1),
-          _buildBottomNavItem(Icons.notifications, 'Notifications', 2),
-          _buildBottomNavItem(Icons.history, 'History', 3),
-          _buildBottomNavItem(Icons.account_circle, 'Account', 4),
+          vertical5,
+          vertical20,
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: () async {
+                await userProvider.fetchUserProfile();
+              },
+              child: ListView(
+                children: [
+                  ScrollableBalanceWidget(),
+                  // Available Balance Section
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.widthOf(10)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        quickActionWidget(
+                          title: "Add Money",
+                          icon: Icons.add,
+                          onTap: () {
+                            Get.to(() => CollectPaymentScreen());
+                          },
+                        ),
+                        quickActionWidget(
+                          title: "Exchange",
+                          icon: Icons.swap_horiz,
+                          onTap: () {},
+                        ),
+                        quickActionWidget(
+                          title: "Loan",
+                          icon: Icons.money_off,
+                          onTap: () {},
+                        ),
+                        PopupMenuWidget(
+                          onSelected: onPopupMenuSelected,
+                        ),
+                      ],
+                    ),
+                  ),
+                  vertical30,
+                  // New Loan Options Section
+                  Container(
+                    decoration: BoxDecoration(
+                      color: customColor, // Background color
+                      borderRadius:
+                          BorderRadius.circular(10), // Smooth border radius
+                    ),
+                    padding: EdgeInsets.all(15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment
+                          .spaceBetween, // Space between text and icon
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "Our travel loan options",
+                            style: txStyle12.copyWith(color: Colors.white),
+                            textAlign: TextAlign
+                                .left, // Center text horizontally within the row
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios, // Greater than icon
+                          color: Colors.white,
+                          size: 16, // Adjust size as needed
+                        ),
+                      ],
+                    ),
+                  ),
+                  vertical30,
+                  // Cash Inflow Section
+                  const CashInflowWidget(),
+
+                  // Home Card Section with Lottie
+                  vertical30,
+                  const HomeCardSectionWidget(
+                    title: "📍 What is Jeemo.io?",
+                    description: "All you need to know about your digital bank",
+                    lottieAsset: 'asset/lottie/master_jeemo.json',
+                    backgroundColor: Color.fromARGB(255, 105, 9, 139),
+                  ),
+                  vertical20,
+                  const HomeCardSectionWidget(
+                    title: "📍 Loan assistance for your travel needs",
+                    description: "Fund your wallet with ease",
+                    lottieAsset: 'asset/lottie/travel_money.json',
+                    backgroundColor: Color.fromARGB(255, 0, 0, 0),
+                  ),
+                  vertical20,
+                  // New Section with Lottie Animation
+                ],
+              ),
+            ),
+          ),
         ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
       ),
     );
   }
 
-  BottomNavigationBarItem _buildBottomNavItem(
-      IconData icon, String label, int index) {
-    return BottomNavigationBarItem(
-      icon: AnimatedSwitcher(
-        duration: Duration(milliseconds: 300),
-        child: Icon(
-          icon,
-          key: ValueKey<int>(index),
-          color: _selectedIndex == index ? appPrimaryColor : Colors.black,
-          size: 24.0,
+  Widget quickActionWidget({
+    required String title,
+    required IconData icon,
+    required Function onTap,
+  }) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () => onTap(),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white, // White background
+              borderRadius: BorderRadius.circular(10), // Smooth border radius
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Icon(
+                icon,
+                color: Colors.black, // Use custom color for icons
+                size: 30,
+              ),
+            ),
+          ),
         ),
-      ),
-      label: label,
+        SizedBox(height: 10), // Spacing between the icon and text
+        Text(
+          title,
+          style: txStyle12,
+        ),
+      ],
     );
   }
 }
@@ -434,10 +317,10 @@ class PaymentBreakdownWidget extends StatelessWidget {
   final String value;
 
   const PaymentBreakdownWidget({
-    super.key,
+    Key? key,
     required this.icon,
     required this.value,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -445,13 +328,13 @@ class PaymentBreakdownWidget extends StatelessWidget {
       children: [
         Icon(
           icon,
-          size: 15,
           color: appPrimaryColor,
+          size: 16, // Adjust size as needed
         ),
         horizontalx5,
         Text(
           value,
-          style: txStyle12Bold.copyWith(color: appPrimaryColor),
+          style: txStyle12.copyWith(color: appPrimaryColor),
         ),
       ],
     );
@@ -479,8 +362,8 @@ class quickActionWidget extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle, // Circular shape
-              border: Border.all(color: appPrimaryColor),
-              color: lightGray, // Background color
+              color: Colors.white, // White background
+              border: Border.all(color: appPrimaryColor), // Border color
             ),
             child: Padding(
               padding: const EdgeInsets.all(8),
@@ -488,7 +371,7 @@ class quickActionWidget extends StatelessWidget {
                 child: Icon(
                   icon,
                   size: 25,
-                  color: Theme.of(context).iconTheme.color,
+                  color: appPrimaryColor, // Icon color
                 ),
               ),
             ),

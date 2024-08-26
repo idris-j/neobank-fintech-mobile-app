@@ -38,9 +38,9 @@ class _CustomButtonState extends State<CustomButton> {
       onTap: widget.onTap,
       child: Container(
         height: widget.height ?? 60,
-        width: 350,
+        width: 250,
         decoration: BoxDecoration(
-            color: widget.buttonColor ?? appPrimaryColor,
+            color: widget.buttonColor ?? customColor,
             borderRadius: BUTTONBORDERRADIUS,
             border: Border.all(color: widget.borderColor ?? appPrimaryColor)),
         child: Center(

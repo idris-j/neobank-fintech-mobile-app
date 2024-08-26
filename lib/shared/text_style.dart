@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 TextStyle _createTextStyle(double fontSize,
-    {FontWeight? fontWeight, Color? color}) {
+    {FontWeight? fontWeight, Color? color, double? letterSpacing}) {
   return TextStyle(
     fontSize: fontSize,
     fontWeight: fontWeight,
     color: color,
+    letterSpacing: letterSpacing,
   );
 }
 
@@ -33,7 +34,7 @@ var txStyle15 = _createTextStyle(15);
 
 var txStyle15Bold = _createTextStyle(15, fontWeight: FontWeight.bold);
 
-var txStyle16 = _createTextStyle(11);
+var txStyle16 = _createTextStyle(16);
 
 var txStyle16Bold = _createTextStyle(16, fontWeight: FontWeight.bold);
 
@@ -51,8 +52,7 @@ var txStyle25Bold = _createTextStyle(25, fontWeight: FontWeight.bold);
 
 var txStyle27 = _createTextStyle(27);
 
-var txStyle27Bold = _createTextStyle(15, fontWeight: FontWeight.bold);
-var txStyle27BoldNew = _createTextStyle(27, fontWeight: FontWeight.bold);
+var txStyle27Bold = _createTextStyle(27, fontWeight: FontWeight.bold);
 
 //////////////////
 
@@ -110,14 +110,3 @@ var txStyle27wt = _createTextStyle(27, color: Colors.white);
 
 var txStyle27Boldwt =
     _createTextStyle(27, fontWeight: FontWeight.bold, color: Colors.white);
-
-// class appTextstyle fontFamily: "inter", {
-//   final BuildContext context;
-//   appTextstyle(fontFamily: "inter", this.context);
-
-//   final  txStyle10 = Theme.of(context)
-//       .primaryTextTheme
-//       .bodyMedium!
-//       .copyWith(fontSize: 10);
-
-// }
