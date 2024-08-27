@@ -34,7 +34,7 @@ class BottomNavigationWidget extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.wallet),
-          label: 'Wallet',
+          label: 'Cards',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.swap_horiz),
