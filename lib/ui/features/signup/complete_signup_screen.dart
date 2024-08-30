@@ -19,7 +19,8 @@ class SignUpCompletedScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset("asset/lottie/animation_llim3alq.json", repeat: false),
+            Lottie.asset("assets/lottie/animation_llim3alq.json",
+                repeat: false),
             vertical30,
             Text(
               "Registration Successful!",

@@ -55,7 +55,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
           children: [
             Center(
               child: Image.asset(
-                "asset/images/brixb_logo.png",
+                "assets/images/brixb_logo.png",
                 height: 50,
                 width: 50,
               ),

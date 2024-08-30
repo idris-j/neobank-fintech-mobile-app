@@ -38,7 +38,7 @@ class CustomHeaderAppLogoWidget extends StatelessWidget {
               child: Center(
                 child: IconButton(
                   icon: Image.asset(
-                    'asset/images/jeemo_pay_icon.png', // Path to your image asset
+                    'assets/images/jeemo_pay_icon.png', // Path to your image asset
                     fit: BoxFit.contain,
                     width: 20.0, // Set the size of the image here
                     height: 20.0, // Set the size of the image here

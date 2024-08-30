@@ -36,8 +36,8 @@ class PopupMenuWidget extends StatelessWidget {
             Get.to(() =>
                 const GenerateBankStatementScreen()); // Navigate to GenerateBankStatementScreen
             break;
-          case 'Currency Converter':
-            // Navigate to the Currency Converter screen
+          case 'Live Exchange Rates':
+            // Navigate to the Live Exchange Rates screen
             // Example: Get.to(() => CurrencyConverterScreen());
             Get.to(() =>
                 const SendMoneyScreen()); // Navigate to UserBankDetailsScreen
@@ -92,7 +92,7 @@ class PopupMenuWidget extends StatelessWidget {
           ),
         ),
         PopupMenuItem(
-          value: 'Currency Converter',
+          value: 'Live Exchange Rates',
           child: Row(
             children: [
               const Icon(
@@ -102,7 +102,7 @@ class PopupMenuWidget extends StatelessWidget {
               ),
               const SizedBox(width: 10), // Horizontal space
               const Text(
-                'Currency Converter',
+                'Live Exchange Rates',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 14, // Adjust font size as needed

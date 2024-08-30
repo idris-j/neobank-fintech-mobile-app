@@ -68,6 +68,14 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+  #for app icon
+  flutter_launcher_icons: ^0.13.1
+
+#flutter icon configuration
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/jeemo_pay_icon.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -80,16 +88,16 @@ flutter:
   uses-material-design: true
 
   assets:
-    - asset/images/
-    - asset/lottie/
-    - asset/svgs/
-    - asset/images/external/cbn_logo.png
-    - asset/images/external/cbn_text.png
-    - asset/images/external/ndic_logo.png
-    - asset/images/currencies/default_flag.png
-    - asset/images/currencies/ghs_flag.png
-    - asset/images/currencies/ngn_flag.png
-    - asset/images/currencies/gbp_flag.png
+    - assets/images/
+    - assets/lottie/
+    - assets/svgs/
+    - assets/images/external/cbn_logo.png
+    - assets/images/external/cbn_text.png
+    - assets/images/external/ndic_logo.png
+    - assets/images/currencies/default_flag.png
+    - assets/images/currencies/ghs_flag.png
+    - assets/images/currencies/ngn_flag.png
+    - assets/images/currencies/gbp_flag.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -104,8 +112,8 @@ flutter:
     - family: Plus_Jakarta_Sans
     - family: BrickSans
       fonts:
-        - asset: asset/fonts/PlusJakartaSans-VariableFont_wght.ttf
-        - asset: asset/fonts/brick-sans/BrickSans-Bold.otf
+        - asset: assets/fonts/PlusJakartaSans-VariableFont_wght.ttf
+        - asset: assets/fonts/brick-sans/BrickSans-Bold.otf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

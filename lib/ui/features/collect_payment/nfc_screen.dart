@@ -192,7 +192,7 @@ class _ReadCardScreenState extends State<ReadCardScreen> {
             style: txStyle14,
           ),
           vertical30,
-          Lottie.asset("asset/lottie/jeemo_pay-nfc-lottie.json",
+          Lottie.asset("assets/lottie/jeemo_pay-nfc-lottie.json",
               height: 300, width: 300),
         ]),
       ),
@@ -298,7 +298,7 @@ class NFCCompleted extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset("asset/lottie/done.json",
+              Lottie.asset("assets/lottie/done.json",
                   height: 300, width: 300, repeat: false),
               vertical20,
               Text(

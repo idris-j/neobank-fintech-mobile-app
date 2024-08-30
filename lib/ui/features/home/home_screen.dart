@@ -72,8 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
       case 'Transaction Statement':
         // Navigate to Transaction Statement screen
         break;
-      case 'Currency Converter':
-        // Navigate to Currency Converter screen
+      case 'Live Exchange Rates':
+        // Navigate to Live Exchange Rates screen
         break;
       case 'Add New Account':
         // Navigate to Add New Account screen
@@ -208,7 +208,7 @@ class HomeContentScreen extends StatelessWidget {
                   HomeCardSectionWidget(
                     title: "📍 What is Jeemo.io?",
                     description: "All you need to know about your digital bank",
-                    lottieAsset: 'asset/lottie/master_jeemo.json',
+                    lottieAsset: 'assets/lottie/master_jeemo.json',
                     backgroundColor: const Color.fromARGB(255, 105, 9, 139),
                     onTap: () {
                       showAboutUsBottomSheet(context);
@@ -218,7 +218,7 @@ class HomeContentScreen extends StatelessWidget {
                   HomeCardSectionWidget(
                     title: "📍 Loan assistance for your travel needs",
                     description: "Fund your wallet with ease",
-                    lottieAsset: 'asset/lottie/travel_money.json',
+                    lottieAsset: 'assets/lottie/travel_money.json',
                     backgroundColor: const Color.fromARGB(255, 0, 0, 0),
                     onTap: () {
                       showLoanDetailsBottomSheet(context);

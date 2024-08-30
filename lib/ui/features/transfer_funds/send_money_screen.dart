@@ -499,17 +499,17 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
     String assetPath;
     switch (currency) {
       case 'GHS':
-        assetPath = 'asset/images/currencies/ghs_flag.png';
+        assetPath = 'assets/images/currencies/ghs_flag.png';
         break;
       case 'NGN':
-        assetPath = 'asset/images/currencies/ngn_flag.png';
+        assetPath = 'assets/images/currencies/ngn_flag.png';
         break;
       case 'GBP':
-        assetPath = 'asset/images/currencies/gbp_flag.png';
+        assetPath = 'assets/images/currencies/gbp_flag.png';
         break;
       default:
         assetPath =
-            'asset/images/currencies/default_flag.png'; // Add a default case if needed
+            'assets/images/currencies/default_flag.png'; // Add a default case if needed
     }
 
     return Container(

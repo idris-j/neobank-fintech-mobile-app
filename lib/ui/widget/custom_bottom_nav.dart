@@ -44,7 +44,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
             userProv.selectedIndex == 0
                 ? BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      "asset/svgs/house.svg",
+                      "assets/svgs/house.svg",
                       color: appPrimaryColor,
                       height: 20,
                       width: 20,
@@ -52,7 +52,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
                     label: "Home")
                 : BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      "asset/svgs/house.svg",
+                      "assets/svgs/house.svg",
                       color: Colors.grey,
                       height: 20,
                       width: 20,
@@ -61,7 +61,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
             userProv.selectedIndex == 1
                 ? BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      "asset/svgs/cash-banknote.svg",
+                      "assets/svgs/cash-banknote.svg",
                       color: appPrimaryColor,
                       height: 20,
                       width: 20,
@@ -70,7 +70,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
                   )
                 : BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      "asset/svgs/cash-banknote.svg",
+                      "assets/svgs/cash-banknote.svg",
                       height: 20,
                       width: 20,
                       color: Colors.grey,
@@ -79,7 +79,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
             userProv.selectedIndex == 2
                 ? BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      "asset/svgs/pig-money.svg",
+                      "assets/svgs/pig-money.svg",
                       color: appPrimaryColor,
                       height: 20,
                       width: 20,
@@ -88,7 +88,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
                   )
                 : BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      "asset/svgs/pig-money.svg",
+                      "assets/svgs/pig-money.svg",
                       color: Colors.grey,
                       height: 20,
                       width: 20,

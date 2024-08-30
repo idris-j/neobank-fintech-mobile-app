@@ -36,7 +36,7 @@ class _SimpleDropDownState extends State<NationChooseDropDown> {
               children: [
                 // Add the Lottie animation
                 Lottie.asset(
-                  'asset/lottie/choose_location.json', // Path to your Lottie file
+                  'assets/lottie/choose_location.json', // Path to your Lottie file
                   width: 150,
                   height: 150,
                   fit: BoxFit.contain,

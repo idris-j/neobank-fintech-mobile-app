@@ -134,7 +134,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Image.asset(
-                      'asset/images/card_jeemo.png', // Placeholder for the card logo (e.g., Mastercard)
+                      'assets/images/card_jeemo.png', // Placeholder for the card logo (e.g., Mastercard)
                       width: 100,
                     ),
                   ),

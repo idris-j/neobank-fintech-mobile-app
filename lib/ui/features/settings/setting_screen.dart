@@ -61,7 +61,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   children: [
                     SettingOptionsWidget(
                       title: "Appearance",
-                      image: "asset/svgs/palette.svg",
+                      image: "assets/svgs/palette.svg",
                       onTap: () {
                         Get.to(AppearanceScreen());
                       },
@@ -69,7 +69,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     vertical10,
                     SettingOptionsWidget(
                       title: "Security",
-                      image: "asset/svgs/lock.svg",
+                      image: "assets/svgs/lock.svg",
                       onTap: () {
                         Get.to(AppearanceScreen());
                       },

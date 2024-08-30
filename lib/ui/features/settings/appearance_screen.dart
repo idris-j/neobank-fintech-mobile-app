@@ -67,7 +67,7 @@ class _AppearanceScreenState extends State<AppearanceScreen> {
                 Column(
                   children: [
                     SvgPicture.asset(
-                      "asset/svgs/moon-filled.svg",
+                      "assets/svgs/moon-filled.svg",
                       height: 30,
                       width: 30,
                       color: Theme.of(context).iconTheme.color,
@@ -95,7 +95,7 @@ class _AppearanceScreenState extends State<AppearanceScreen> {
                 Column(
                   children: [
                     SvgPicture.asset(
-                      "asset/svgs/bulb.svg",
+                      "assets/svgs/bulb.svg",
                       height: 30,
                       width: 30,
                       color: Theme.of(context).iconTheme.color,
@@ -123,7 +123,7 @@ class _AppearanceScreenState extends State<AppearanceScreen> {
                 Column(
                   children: [
                     SvgPicture.asset(
-                      "asset/svgs/adjustments-alt.svg",
+                      "assets/svgs/adjustments-alt.svg",
                       height: 30,
                       width: 30,
                       color: Theme.of(context).iconTheme.color,

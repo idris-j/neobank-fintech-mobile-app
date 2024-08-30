@@ -18,7 +18,7 @@ class GetStartedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<GetStartedItem> items = [
-      GetStartedItem("asset/lottie/getStarted.json",
+      GetStartedItem("assets/lottie/getStarted.json",
           "Manage your finances! The right way!", true),
     ];
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -42,7 +42,7 @@ class GetStartedScreen extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: LottieBuilder.asset(
-                                    "asset/lottie/getStarted.json",
+                                    "assets/lottie/getStarted.json",
                                     height: SizeConfig.heightOf(50),
                                     width: SizeConfig.heightOf(50)),
                               )),

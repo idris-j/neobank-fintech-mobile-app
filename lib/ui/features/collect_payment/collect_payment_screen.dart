@@ -68,7 +68,7 @@ class _CollectPaymentScreenState extends State<CollectPaymentScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         SvgPicture.asset(
-                                          "asset/svgs/nfc.svg",
+                                          "assets/svgs/nfc.svg",
                                           color:
                                               Theme.of(context).iconTheme.color,
                                         ),
@@ -102,7 +102,7 @@ class _CollectPaymentScreenState extends State<CollectPaymentScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         SvgPicture.asset(
-                                          "asset/svgs/qrcode.svg",
+                                          "assets/svgs/qrcode.svg",
                                           color:
                                               Theme.of(context).iconTheme.color,
                                         ),
@@ -137,7 +137,7 @@ class _CollectPaymentScreenState extends State<CollectPaymentScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         SvgPicture.asset(
-                                          "asset/svgs/link.svg",
+                                          "assets/svgs/link.svg",
                                           color:
                                               Theme.of(context).iconTheme.color,
                                         ),

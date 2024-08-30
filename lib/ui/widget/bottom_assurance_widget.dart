@@ -17,7 +17,7 @@ class LicensedAndAssuredWidget extends StatelessWidget {
         children: [
           // "Licensed by" Section
           Image.asset(
-            'asset/images/external/cbn_logo.png', // Replace with your asset path
+            'assets/images/external/cbn_logo.png', // Replace with your asset path
             height: 12, // Adjust size as needed
           ),
           SizedBox(width: 3), // Add spacing between the image and text
@@ -27,7 +27,7 @@ class LicensedAndAssuredWidget extends StatelessWidget {
           ),
           SizedBox(width: 1),
           Image.asset(
-            'asset/images/external/cbn_text.png', // Replace with your asset path
+            'assets/images/external/cbn_text.png', // Replace with your asset path
             height: 10, // Adjust size as needed
           ),
           SizedBox(width: 0), // Add spacing between the two sections
@@ -39,7 +39,7 @@ class LicensedAndAssuredWidget extends StatelessWidget {
           ),
           SizedBox(width: 2), // Add spacing between the text and image
           Image.asset(
-            'asset/images/external/ndic_logo.png', // Replace with your asset path
+            'assets/images/external/ndic_logo.png', // Replace with your asset path
             height: 11, // Adjust size as needed
           ),
         ],

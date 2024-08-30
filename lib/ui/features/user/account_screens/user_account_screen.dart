@@ -90,7 +90,7 @@ class UserAccountScreen extends StatelessWidget {
                   CircleAvatar(
                     radius: 45.0,
                     backgroundImage:
-                        AssetImage('asset/images/default_profile.jpg'),
+                        AssetImage('assets/images/default_profile.jpg'),
                   ),
                   Positioned(
                     bottom: 0,

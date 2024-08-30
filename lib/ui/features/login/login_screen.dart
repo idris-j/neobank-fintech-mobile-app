@@ -103,8 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(6)),
                     child: Lottie.asset(
                         Platform.isIOS
-                            ? "asset/lottie/face_id.json"
-                            : "asset/lottie/biometric.json",
+                            ? "assets/lottie/face_id.json"
+                            : "assets/lottie/biometric.json",
                         height: SizeConfig.heightOf(6),
                         width: SizeConfig.heightOf(6),
                         repeat: false),

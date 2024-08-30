@@ -113,7 +113,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                                             MainAxisAlignment.center,
                                         children: [
                                           SvgPicture.asset(
-                                            "asset/svgs/nfc.svg",
+                                            "assets/svgs/nfc.svg",
                                             color: Theme.of(context)
                                                 .iconTheme
                                                 .color,
@@ -169,7 +169,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         SvgPicture.asset(
-                                          "asset/svgs/nfc.svg",
+                                          "assets/svgs/nfc.svg",
                                           color:
                                               Theme.of(context).iconTheme.color,
                                         ),

@@ -52,7 +52,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                "asset/images/brixb_logo.png",
+                "assets/images/brixb_logo.png",
                 height: 50,
                 width: 50,
               ),

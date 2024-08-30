@@ -40,7 +40,7 @@ class _brandedSplashScreenState extends State<brandedSplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "asset/images/jeemo_pay-logo.png",
+                "assets/images/jeemo_pay-logo.png",
                 height: SizeConfig.heightOf(55),
                 width: SizeConfig.widthOf(55),
               ),
