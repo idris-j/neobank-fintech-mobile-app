@@ -221,12 +221,13 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
                 },
                 backgroundColor: Colors.white,
                 textColor: Colors.black,
-                labelTextSize: 14,
-                balanceTextSize: 12,
+                labelTextSize: 12, // Reduced font size
+                balanceTextSize: 10, // Reduced font size
+                amountTextSize: 24, // Reduced font size
               ),
 
               // Spacing
-              if (showReceiverGets) SizedBox(height: SizeConfig.heightOf(3)),
+              if (showReceiverGets) SizedBox(height: SizeConfig.heightOf(7)),
 
               // Receiver Gets Section (Only for International Transfers)
               if (showReceiverGets)
@@ -245,11 +246,12 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
                   enabled: false,
                   showBalance: false,
                   textColor: Colors.black,
-                  labelTextSize: 14,
+                  labelTextSize: 12, // Reduced font size
+                  amountTextSize: 24, // Reduced font size
                 ),
 
               // Spacing before Note Section
-              SizedBox(height: SizeConfig.heightOf(4)),
+              SizedBox(height: SizeConfig.heightOf(2)),
 
               // Note Section
               _buildNoteSection(),
@@ -264,52 +266,46 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
           // Vertical Line with Icons (Only for International Transfers)
           if (showReceiverGets)
             Positioned(
-              left: SizeConfig.widthOf(7), // Aligns with the left of containers
-              top: SizeConfig.heightOf(16.6), // Adjust to align with containers
-              bottom:
-                  SizeConfig.heightOf(34), // Adjust to align with containers
+              left: SizeConfig.widthOf(
+                  5), // Adjust alignment for smaller containers
+              top: SizeConfig.heightOf(
+                  15), // Adjust to align with smaller containers
+              bottom: SizeConfig.heightOf(
+                  20), // Adjust to align with smaller containers
               child: Column(
                 children: [
                   // Top Line
                   Container(
                     width: 1, // Width of the vertical line
-                    height: SizeConfig.heightOf(1.25),
+                    height: SizeConfig.heightOf(0.8), // Reduced height
                     color: Color.fromARGB(255, 189, 189, 189), // Line color
                   ),
 
                   // First Icon with Border
                   _buildIconInLine(
                     icon: Icons.security,
-                    iconSize: 9,
-                    shapeSize: 14,
-                    backgroundColor: Colors.white,
-                    borderColor:
-                        Color.fromARGB(255, 189, 189, 189), // Grey border color
-                    borderWidth: 1, // Border width of 1
+                    iconSize: 7, // Reduced icon size
+                    shapeSize: 12, // Reduced shape size
                   ),
 
                   // Middle Line
                   Container(
                     width: 1, // Width of the vertical line
-                    height: SizeConfig.heightOf(1),
+                    height: SizeConfig.heightOf(0.8), // Reduced height
                     color: Color.fromARGB(255, 189, 189, 189), // Line color
                   ),
 
                   // Second Icon with Border
                   _buildIconInLine(
                     icon: Icons.electric_bolt,
-                    iconSize: 8,
-                    shapeSize: 14,
-                    backgroundColor: Colors.white,
-                    borderColor:
-                        Color.fromARGB(255, 189, 189, 189), // Grey border color
-                    borderWidth: 1, // Border width of 1
+                    iconSize: 8, // Reduced icon size
+                    shapeSize: 12, // Reduced shape size
                   ),
 
                   // Bottom Line
                   Container(
                     width: 1, // Width of the vertical line
-                    height: SizeConfig.heightOf(1.5),
+                    height: SizeConfig.heightOf(1.0), // Reduced height
                     color: Color.fromARGB(255, 189, 189, 189), // Line color
                   ),
                 ],
@@ -362,12 +358,12 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
     bool enabled = true,
     bool showBalance = true,
     required Color textColor,
-    double labelTextSize = 16,
-    double balanceTextSize = 14,
-    double amountTextSize = 30,
+    double labelTextSize = 12, // Reduced font size
+    double balanceTextSize = 10, // Reduced font size
+    double amountTextSize = 24, // Reduced font size
   }) {
     return Container(
-      padding: EdgeInsets.all(SizeConfig.widthOf(4)),
+      padding: EdgeInsets.all(SizeConfig.widthOf(3)), // Adjust padding
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius:
@@ -382,13 +378,13 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
             label,
             style: GoogleFonts.roboto(
               textStyle: TextStyle(
-                fontSize: labelTextSize,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: textColor, // Color for section label
               ),
             ),
           ),
-          SizedBox(height: SizeConfig.heightOf(1)),
+          SizedBox(height: SizeConfig.heightOf(0.5)), // Reduced spacing
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -396,22 +392,22 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
               Expanded(
                 flex: 3,
                 child: Container(
-                  padding: EdgeInsets.only(right: SizeConfig.widthOf(3)),
+                  padding: EdgeInsets.only(
+                      right: SizeConfig.widthOf(2)), // Adjust padding
                   child: TextFormField(
                     controller: controller,
                     keyboardType: TextInputType.number,
                     enabled: enabled,
                     style: GoogleFonts.roboto(
                       textStyle: TextStyle(
-                        fontSize:
-                            amountTextSize, // Font size for entered amount
+                        fontSize: 32, // Font size for entered amount
                         color: Colors.black, // Text color for entered amount
                       ),
                     ),
                     decoration: InputDecoration(
                       border: InputBorder.none, // Removed the border
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 0, vertical: 12),
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 0, vertical: 8), // Reduced padding
                       hintText: hint,
                       hintStyle:
                           TextStyle(color: Colors.grey[400]), // Grey hint text
@@ -431,9 +427,11 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(
-                        horizontal: SizeConfig.widthOf(4), vertical: 12),
+                        horizontal: SizeConfig.widthOf(3),
+                        vertical: 8), // Adjust padding
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius:
+                          BorderRadius.circular(15), // Adjust border radius
                       border: Border.all(
                         color: Color.fromARGB(255, 164, 11, 159),
                         width: 1,
@@ -497,22 +495,21 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
     );
   }
 
-// Custom method to get the appropriate currency icon
   Widget _getCurrencyIcon(String currency) {
     String assetPath;
     switch (currency) {
       case 'GHS':
-        assetPath = 'asset/images/ghs_flag.png';
+        assetPath = 'asset/images/currencies/ghs_flag.png';
         break;
       case 'NGN':
-        assetPath = 'asset/images/ngn_flag.png';
+        assetPath = 'asset/images/currencies/ngn_flag.png';
         break;
       case 'GBP':
-        assetPath = 'asset/images/gbp_flag.png';
+        assetPath = 'asset/images/currencies/gbp_flag.png';
         break;
       default:
         assetPath =
-            'asset/images/default_flag.png'; // Add a default case if needed
+            'asset/images/currencies/default_flag.png'; // Add a default case if needed
     }
 
     return Container(
@@ -531,6 +528,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
   // Build Note Section without a label and with a transparent background
   Widget _buildNoteSection() {
     return Container(
+      height: 70.0, // Set the desired height here
       padding: EdgeInsets.all(SizeConfig.widthOf(4)),
       decoration: BoxDecoration(
         borderRadius:
@@ -548,6 +546,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
           hintStyle: TextStyle(color: Colors.grey[400]), // Grey hint text
           filled: false, // Removed the background color
         ),
+        maxLines: null, // Allows the text field to expand if needed
       ),
     );
   }

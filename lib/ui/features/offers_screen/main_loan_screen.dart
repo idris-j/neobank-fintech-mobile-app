@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jeemo_pay/shared/colors.dart'; // Replace with your actual color imports
 import 'package:jeemo_pay/shared/sizeConfig.dart'; // Replace with your actual size configuration
 import 'package:jeemo_pay/shared/text_style.dart'; // Replace with your actual text styles
+import 'package:jeemo_pay/ui/widget/bottom_sheet_image_widget.dart';
 import 'package:jeemo_pay/ui/widget/custom_header_back_widget.dart'; // Import your custom header widget
 import 'dart:math';
 
@@ -40,7 +41,7 @@ class _LoanOptionsScreenState extends State<LoanOptionsScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: SizeConfig.widthOf(5),
-                vertical: SizeConfig.heightOf(3),
+                vertical: SizeConfig.heightOf(0),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,8 +86,8 @@ class _LoanOptionsScreenState extends State<LoanOptionsScreen> {
             'Loan Amount',
             _amountController,
             '0.00',
-            'USD',
-            ['USD', 'EUR', 'GBP'],
+            'NGN',
+            ['GHS', 'NGN', 'GBP'],
             (value) {},
             backgroundColor: Colors.white,
             textColor: Colors.black,
@@ -111,12 +112,7 @@ class _LoanOptionsScreenState extends State<LoanOptionsScreen> {
           _buildMonthlyRepaymentSection(),
 
           // Spacing
-          SizedBox(height: SizeConfig.heightOf(4)),
-
-          // Note Section
-          _buildNoteSection(),
-
-          Spacer(),
+          SizedBox(height: SizeConfig.heightOf(10)),
 
           // Submit Button
           Center(
@@ -418,27 +414,51 @@ class _LoanOptionsScreenState extends State<LoanOptionsScreen> {
   // Show the Custom Bottom Sheet for Currency Selection
   void _showCurrencySelectionSheet(BuildContext context,
       List<String> currencies, ValueChanged<String?> onChanged) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.all(20),
-          child: ListView(
-            children: currencies.map((currency) {
-              return ListTile(
-                leading: Icon(Icons.attach_money),
-                title: Text(currency),
-                onTap: () {
-                  onChanged(currency);
-                  Navigator.pop(context);
-                },
-              );
-            }).toList(),
-          ),
+    CustomBottomImageSheet.show(
+      context,
+      options: currencies.map((currency) {
+        return BottomSheetOption(
+          icon: _getCurrencyIcon(
+              currency), // Use the custom method to get the icon
+          title: currency,
+          onTap: () {
+            onChanged(currency);
+            Navigator.pop(context);
+          },
         );
-      },
+      }).toList(),
     );
   }
+
+  Widget _getCurrencyIcon(String currency) {
+    String assetPath;
+    switch (currency) {
+      case 'GHS':
+        assetPath = 'asset/images/currencies/ghs_flag.png';
+        break;
+      case 'NGN':
+        assetPath = 'asset/images/currencies/ngn_flag.png';
+        break;
+      case 'GBP':
+        assetPath = 'asset/images/currencies/gbp_flag.png';
+        break;
+      default:
+        assetPath =
+            'asset/images/currencies/default_flag.png'; // Add a default case if needed
+    }
+
+    return Container(
+      width: 40, // Set the width of the circle container
+      height: 40, // Set the height of the circle container
+      decoration: BoxDecoration(
+        shape: BoxShape.circle, // Make the container circular
+        image: DecorationImage(
+          image: AssetImage(assetPath),
+          fit: BoxFit.cover, // Cover the entire circle with the flag image
+        ),
+      ),
+    );
+  } // This is the closing brace for _getCurrencyIcon method
 
   // Show the Custom Bottom Sheet for Duration Selection
   void _showDurationSelectionSheet(BuildContext context) {

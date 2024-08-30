@@ -53,6 +53,8 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   material_design_icons_flutter: ^7.0.7296
   google_fonts: ^6.2.1
+  fl_chart: ^0.69.0 # Check for the latest version
+
 
 
 dev_dependencies:
@@ -81,6 +83,14 @@ flutter:
     - asset/images/
     - asset/lottie/
     - asset/svgs/
+    - asset/images/external/cbn_logo.png
+    - asset/images/external/cbn_text.png
+    - asset/images/external/ndic_logo.png
+    - asset/images/currencies/default_flag.png
+    - asset/images/currencies/ghs_flag.png
+    - asset/images/currencies/ngn_flag.png
+    - asset/images/currencies/gbp_flag.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

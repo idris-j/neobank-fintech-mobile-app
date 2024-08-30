@@ -27,7 +27,7 @@ import 'package:jeemo_pay/ui/widget/bottom_navigation_widget.dart';
 import 'package:jeemo_pay/ui/widget/pop_up_menu_widget.dart';
 
 // Import the new screens
-import 'package:jeemo_pay/ui/features/user/wallet_screen.dart';
+import 'package:jeemo_pay/ui/features/cards/cards_screen.dart';
 import 'package:jeemo_pay/ui/features/transfer_funds/send_money_screen.dart';
 import 'package:jeemo_pay/ui/features/user/transaction_history_screen.dart';
 import 'package:jeemo_pay/ui/features/user/account_screens/user_account_screen.dart';
@@ -185,7 +185,7 @@ class HomeContentScreen extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              "Request loan to travel.",
+                              "Request loan to travel abroad.",
                               style: txStyle12.copyWith(color: Colors.white),
                               textAlign: TextAlign.left,
                             ),
@@ -231,7 +231,6 @@ class HomeContentScreen extends StatelessWidget {
               ),
             ),
           ),
-          const LicensedAndAssuredWidget(),
         ],
       ),
     );

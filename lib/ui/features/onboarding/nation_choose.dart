@@ -10,14 +10,14 @@ import 'package:jeemo_pay/ui/widget/custom_button.dart';
 import 'package:provider/provider.dart';
 import 'package:lottie/lottie.dart'; // Import the Lottie package
 
-class AutocompleteDropDown extends StatefulWidget {
-  const AutocompleteDropDown({Key? key}) : super(key: key);
+class NationChooseDropDown extends StatefulWidget {
+  const NationChooseDropDown({Key? key}) : super(key: key);
 
   @override
-  State<AutocompleteDropDown> createState() => _SimpleDropDownState();
+  State<NationChooseDropDown> createState() => _SimpleDropDownState();
 }
 
-class _SimpleDropDownState extends State<AutocompleteDropDown> {
+class _SimpleDropDownState extends State<NationChooseDropDown> {
   String _selectedItem = '';
   final _formKey = GlobalKey<FormState>();
 

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:jeemo_pay/ui/features/onboarding/get_started_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:jeemo_pay/ui/features/onboarding/nation_choose.dart';
+import 'package:jeemo_pay/ui/widget/bottom_assurance_widget.dart';
 import '../../../shared/sizeConfig.dart';
 
 class brandedSplashScreen extends StatefulWidget {
@@ -24,7 +24,7 @@ class _brandedSplashScreenState extends State<brandedSplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2), () async {
-      Get.off(AutocompleteDropDown());
+      Get.off(GetStartedScreen());
     });
   }
 
@@ -44,6 +44,7 @@ class _brandedSplashScreenState extends State<brandedSplashScreen> {
                 height: SizeConfig.heightOf(55),
                 width: SizeConfig.widthOf(55),
               ),
+              const LicensedAndAssuredWidget(), // Add the LicensedAndAssuredWidget here
             ],
           ),
         ),

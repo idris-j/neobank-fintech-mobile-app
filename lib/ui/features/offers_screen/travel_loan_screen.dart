@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart'; // Import Google Fonts package
 import 'package:jeemo_pay/shared/colors.dart'; // Assuming you have a color scheme here
 import 'package:jeemo_pay/shared/sizeConfig.dart';
 import 'package:jeemo_pay/shared/text_style.dart';
-import 'package:jeemo_pay/ui/widget/bottom_sheet_icon_widget.dart';
+import 'package:jeemo_pay/ui/widget/bottom_sheet_image_widget.dart';
 import 'package:jeemo_pay/ui/widget/custom_header_back_widget.dart'; // Import your custom header widget
 
 // Assuming you've already defined CustomBottomSheet and BottomSheetOption
@@ -45,7 +45,7 @@ class _TravelLoanScreenState extends State<TravelLoanScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: SizeConfig.widthOf(5),
-                vertical: SizeConfig.heightOf(3),
+                vertical: SizeConfig.heightOf(0),
               ), // Increased padding
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,10 +132,7 @@ class _TravelLoanScreenState extends State<TravelLoanScreen> {
           _buildDurationSection(),
 
           // Spacing before Note Section
-          SizedBox(height: SizeConfig.heightOf(4)),
-
-          // Spacing
-          Spacer(),
+          SizedBox(height: SizeConfig.heightOf(6)),
 
           // Request Loan Button
           Center(
@@ -299,11 +296,12 @@ class _TravelLoanScreenState extends State<TravelLoanScreen> {
   // Show the Custom Bottom Sheet for Currency Selection
   void _showCurrencySelectionSheet(BuildContext context,
       List<String> currencies, ValueChanged<String?> onChanged) {
-    CustomBottomIconSheet.show(
+    CustomBottomImageSheet.show(
       context,
       options: currencies.map((currency) {
         return BottomSheetOption(
-          icon: Icons.attach_money,
+          icon: _getCurrencyIcon(
+              currency), // Use the custom method to get the icon
           title: currency,
           onTap: () {
             onChanged(currency);
@@ -313,6 +311,36 @@ class _TravelLoanScreenState extends State<TravelLoanScreen> {
       }).toList(),
     );
   }
+
+  Widget _getCurrencyIcon(String currency) {
+    String assetPath;
+    switch (currency) {
+      case 'GHS':
+        assetPath = 'asset/images/currencies/ghs_flag.png';
+        break;
+      case 'NGN':
+        assetPath = 'asset/images/currencies/ngn_flag.png';
+        break;
+      case 'GBP':
+        assetPath = 'asset/images/currencies/gbp_flag.png';
+        break;
+      default:
+        assetPath =
+            'asset/images/currencies/default_flag.png'; // Add a default case if needed
+    }
+
+    return Container(
+      width: 40, // Set the width of the circle container
+      height: 40, // Set the height of the circle container
+      decoration: BoxDecoration(
+        shape: BoxShape.circle, // Make the container circular
+        image: DecorationImage(
+          image: AssetImage(assetPath),
+          fit: BoxFit.cover, // Cover the entire circle with the flag image
+        ),
+      ),
+    );
+  } // This is the closing brace for _getCurrencyIcon method
 
   // Build the Duration Section
   Widget _buildDurationSection() {

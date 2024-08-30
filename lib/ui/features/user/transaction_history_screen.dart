@@ -33,7 +33,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
           // Filter Section
           Container(
             color: Colors.white,
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -63,7 +63,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(26.0),
               child: ListView(
                 children: [
                   _buildTransactionItem(
