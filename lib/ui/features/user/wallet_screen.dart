@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jeemo_pay/ui/widget/custom_header_wallet_widget.dart';
+import 'package:jeemo_pay/ui/widget/custom_header_app_logo_widget.dart';
 import 'package:jeemo_pay/ui/widget/scrollable_card_widget.dart';
-import 'package:jeemo_pay/ui/widget/custom_header_jeemo_widget.dart'; // Import your custom header widget
+import 'package:jeemo_pay/ui/widget/home_custom_header_widget.dart'; // Import your custom header widget
 
 class WalletScreen extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class WalletScreen extends StatelessWidget {
           Container(
             color: Colors.white,
             padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
-            child: CustomHeaderWalletWidget(
+            child: CustomHeaderAppLogoWidget(
               headerText: "Cards",
             ), // Ensure your custom header has the correct styling
           ),

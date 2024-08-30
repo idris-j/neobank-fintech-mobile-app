@@ -10,4 +10,4 @@ const greyColor = Color.fromARGB(255, 158, 158, 158);
 
 final lightGray = Colors.grey.withOpacity(.5);
 
-const Color customColor = Color(0xFF0019BE);
+const Color customColor = Color(0xFF0049BE);

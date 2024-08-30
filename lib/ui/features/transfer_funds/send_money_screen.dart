@@ -3,7 +3,10 @@ import 'package:google_fonts/google_fonts.dart'; // Import Google Fonts package
 import 'package:jeemo_pay/shared/colors.dart'; // Assuming you have a color scheme here
 import 'package:jeemo_pay/shared/sizeConfig.dart';
 import 'package:jeemo_pay/shared/text_style.dart';
-import 'package:jeemo_pay/ui/widget/custom_header_wallet_widget.dart'; // Import your custom header widget
+import 'package:jeemo_pay/ui/widget/bottom_sheet_image_widget.dart';
+import 'package:jeemo_pay/ui/widget/custom_header_app_logo_widget.dart'; // Import your custom header widget
+
+// Assuming you've already defined CustomBottomSheet and BottomSheetOption
 
 class SendMoneyScreen extends StatefulWidget {
   const SendMoneyScreen({super.key});
@@ -14,8 +17,8 @@ class SendMoneyScreen extends StatefulWidget {
 
 class _SendMoneyScreenState extends State<SendMoneyScreen>
     with SingleTickerProviderStateMixin {
-  String _fromCurrency = 'GBP';
-  String _toCurrency = 'USD';
+  String _fromCurrency = 'GHS';
+  String _toCurrency = 'NGN';
   final _amountController = TextEditingController();
   final _receiverAmountController = TextEditingController();
   final _noteController = TextEditingController();
@@ -46,8 +49,8 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
           Container(
             color: Colors.white,
             padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
-            child: CustomHeaderWalletWidget(
-              headerText: "Send Money",
+            child: CustomHeaderAppLogoWidget(
+              headerText: "Transfer",
             ), // Ensure your custom header has the correct styling
           ),
           Expanded(
@@ -59,17 +62,83 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Tab Bar for International and Local Transfers
-                  TabBar(
-                    controller: _tabController,
-                    tabs: [
-                      Tab(text: 'International'),
-                      Tab(text: 'Local'),
-                    ],
-                    indicatorColor: customColor, // Color for the tab indicator
-                    labelColor: customColor, // Color for selected tab label
-                    unselectedLabelColor:
-                        Colors.black, // Color for unselected tab labels
+                  // Instruction Text outside the tabs, centered
+                  Center(
+                    child: Text(
+                      'Enter the amount you want to send',
+                      style: GoogleFonts.roboto(
+                        textStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: SizeConfig.heightOf(2)), // Spacing
+
+                  // Modern Tab Bar for International and Local Transfers
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.lightBlue[50], // Light blue background
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: TabBar(
+                      controller: _tabController,
+                      tabs: [
+                        Tab(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: SizeConfig.heightOf(1),
+                                horizontal: SizeConfig.widthOf(8)),
+                            child: Text(
+                              'International',
+                              style: GoogleFonts.roboto(
+                                textStyle: TextStyle(
+                                  fontSize: 16, // Increased font size
+                                  color: Colors.black, // Text color for the tab
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Tab(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: SizeConfig.heightOf(1),
+                                horizontal: SizeConfig.widthOf(8)),
+                            child: Text(
+                              'Local',
+                              style: GoogleFonts.roboto(
+                                textStyle: TextStyle(
+                                  fontSize: 16, // Increased font size
+                                  color: Colors.black, // Text color for the tab
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                      indicator: BoxDecoration(
+                        color:
+                            Colors.white, // White background for selected tab
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: Colors.transparent,
+                          width: 0,
+                        ),
+                      ),
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicatorPadding: EdgeInsets.symmetric(horizontal: -20),
+                      labelColor: Colors.black,
+                      unselectedLabelColor: Colors.black54,
+                      labelStyle: GoogleFonts.roboto(),
+                      unselectedLabelStyle: GoogleFonts.roboto(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
                   ),
                   SizedBox(
                       height:
@@ -81,13 +150,46 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
                       controller: _tabController,
                       children: [
                         // International Transfer Tab
-                        _buildTransferContent(),
+                        _buildTransferContent(showReceiverGets: true),
                         // Local Transfer Tab
-                        _buildTransferContent(),
+                        _buildTransferContent(showReceiverGets: false),
                       ],
                     ),
                   ),
                 ],
+              ),
+            ),
+          ),
+
+          // Send Money Button (Outside the TabBarView)
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.widthOf(5),
+              vertical: SizeConfig.heightOf(3),
+            ),
+            child: Center(
+              child: SizedBox(
+                width: SizeConfig.widthOf(80), // Adjust width as needed
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Implement the send money functionality
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: customColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding:
+                        EdgeInsets.symmetric(vertical: SizeConfig.heightOf(2)),
+                    elevation: 5, // Subtle shadow
+                  ),
+                  child: Text(
+                    'Continue',
+                    style: GoogleFonts.roboto(
+                      textStyle: txStyle16.copyWith(color: Colors.white),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -96,102 +198,154 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
     );
   }
 
-  // Build Transfer Content including instruction text, amount currency container, and receiver gets section
-  Widget _buildTransferContent() {
+// Build Transfer Content including instruction text, amount currency container, and optionally receiver gets section
+  Widget _buildTransferContent({required bool showReceiverGets}) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthOf(2)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          // Instruction Text
-          Text(
-            'Enter the amount you want to send',
-            style: GoogleFonts.roboto(
-              textStyle: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: Colors.black87,
-              ),
-            ),
-          ),
-          SizedBox(height: SizeConfig.heightOf(2)), // Spacing
-
-          // You Send Section
-          _buildAmountCurrencyContainer(
-            'You Send',
-            _amountController,
-            '0.00',
-            _fromCurrency,
-            ['GBP', 'USD', 'NGN'],
-            (value) {
-              setState(() {
-                _fromCurrency = value!;
-              });
-            },
-            backgroundColor: Colors.white, // White background
-            textColor: Colors.black, // Black text for section label
-            labelTextSize: 14, // Reduced font size
-            balanceTextSize: 12, // Font size for balance text
-          ),
-
-          // Spacing
-          SizedBox(height: SizeConfig.heightOf(2)),
-
-          // Receiver Gets Section
-          _buildAmountCurrencyContainer(
-            'Receiver Gets',
-            _receiverAmountController,
-            '0.00',
-            _toCurrency,
-            ['GBP', 'USD', 'NGN'],
-            (value) {
-              setState(() {
-                _toCurrency = value!;
-              });
-            },
-            backgroundColor: Colors.white, // White background
-            enabled: false, // Disabled for Receiver Gets section
-            showBalance: false, // No balance for Receiver Gets section
-            textColor: Colors.black, // Black text for section label
-            labelTextSize: 14, // Reduced font size
-          ),
-
-          // Spacing before Note Section
-          SizedBox(height: SizeConfig.heightOf(4)), // Increased spacing
-
-          // Note Section
-          _buildNoteSection(),
-
-          // Spacing
-          Spacer(),
-
-          // Send Money Button
-          Center(
-            child: SizedBox(
-              width: SizeConfig.widthOf(80), // Adjust width as needed
-              child: ElevatedButton(
-                onPressed: () {
-                  // Implement the send money functionality
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // You Send Section
+              _buildAmountCurrencyContainer(
+                'You Send',
+                _amountController,
+                '0.00',
+                _fromCurrency,
+                ['GHS', 'NGN', 'GBP'],
+                (value) {
+                  setState(() {
+                    _fromCurrency = value!;
+                  });
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: customColor, // Custom button color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding:
-                      EdgeInsets.symmetric(vertical: SizeConfig.heightOf(2)),
-                  elevation: 5, // Subtle shadow
+                backgroundColor: Colors.white,
+                textColor: Colors.black,
+                labelTextSize: 14,
+                balanceTextSize: 12,
+              ),
+
+              // Spacing
+              if (showReceiverGets) SizedBox(height: SizeConfig.heightOf(3)),
+
+              // Receiver Gets Section (Only for International Transfers)
+              if (showReceiverGets)
+                _buildAmountCurrencyContainer(
+                  'Receiver Gets',
+                  _receiverAmountController,
+                  '0.00',
+                  _toCurrency,
+                  ['GHS', 'NGN', 'GBP'],
+                  (value) {
+                    setState(() {
+                      _toCurrency = value!;
+                    });
+                  },
+                  backgroundColor: Colors.white,
+                  enabled: false,
+                  showBalance: false,
+                  textColor: Colors.black,
+                  labelTextSize: 14,
                 ),
-                child: Text(
-                  'Continue',
-                  style: GoogleFonts.roboto(
-                    textStyle: txStyle16.copyWith(color: Colors.white),
+
+              // Spacing before Note Section
+              SizedBox(height: SizeConfig.heightOf(4)),
+
+              // Note Section
+              _buildNoteSection(),
+
+              // Spacing
+              Spacer(),
+
+              // Note: Removed Send Money Button from here
+            ],
+          ),
+
+          // Vertical Line with Icons (Only for International Transfers)
+          if (showReceiverGets)
+            Positioned(
+              left: SizeConfig.widthOf(7), // Aligns with the left of containers
+              top: SizeConfig.heightOf(16.6), // Adjust to align with containers
+              bottom:
+                  SizeConfig.heightOf(34), // Adjust to align with containers
+              child: Column(
+                children: [
+                  // Top Line
+                  Container(
+                    width: 1, // Width of the vertical line
+                    height: SizeConfig.heightOf(1.25),
+                    color: Color.fromARGB(255, 189, 189, 189), // Line color
                   ),
-                ),
+
+                  // First Icon with Border
+                  _buildIconInLine(
+                    icon: Icons.security,
+                    iconSize: 9,
+                    shapeSize: 14,
+                    backgroundColor: Colors.white,
+                    borderColor:
+                        Color.fromARGB(255, 189, 189, 189), // Grey border color
+                    borderWidth: 1, // Border width of 1
+                  ),
+
+                  // Middle Line
+                  Container(
+                    width: 1, // Width of the vertical line
+                    height: SizeConfig.heightOf(1),
+                    color: Color.fromARGB(255, 189, 189, 189), // Line color
+                  ),
+
+                  // Second Icon with Border
+                  _buildIconInLine(
+                    icon: Icons.electric_bolt,
+                    iconSize: 8,
+                    shapeSize: 14,
+                    backgroundColor: Colors.white,
+                    borderColor:
+                        Color.fromARGB(255, 189, 189, 189), // Grey border color
+                    borderWidth: 1, // Border width of 1
+                  ),
+
+                  // Bottom Line
+                  Container(
+                    width: 1, // Width of the vertical line
+                    height: SizeConfig.heightOf(1.5),
+                    color: Color.fromARGB(255, 189, 189, 189), // Line color
+                  ),
+                ],
               ),
             ),
-          ),
         ],
+      ),
+    );
+  }
+
+// Build Icon in Line with Circular Background and Border
+  Widget _buildIconInLine({
+    required IconData icon,
+    double iconSize = 20, // Default icon size
+    double shapeSize = 40, // Default shape size
+    Color backgroundColor = Colors.white, // Background color
+    Color borderColor = Colors.grey, // Default border color
+    double borderWidth = 1, // Border width
+  }) {
+    return Container(
+      width: shapeSize, // Size of the circle
+      height: shapeSize,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: borderColor,
+          width: borderWidth,
+        ),
+      ),
+      child: Center(
+        child: Icon(
+          icon,
+          size: iconSize,
+          color: Colors.grey, // Icon color
+        ),
       ),
     );
   }
@@ -206,11 +360,11 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
     ValueChanged<String?> onChanged, {
     required Color backgroundColor,
     bool enabled = true,
-    bool showBalance = true, // Optional parameter to show balance
-    required Color textColor, // Color for the section label text
-    double labelTextSize = 16, // Default size for labels
-    double balanceTextSize = 14, // Font size for balance text
-    double amountTextSize = 30, // Font size for entered amount figures
+    bool showBalance = true,
+    required Color textColor,
+    double labelTextSize = 16,
+    double balanceTextSize = 14,
+    double amountTextSize = 30,
   }) {
     return Container(
       padding: EdgeInsets.all(SizeConfig.widthOf(4)),
@@ -268,37 +422,34 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
                 ),
               ),
 
-              // Currency Dropdown
+              // Currency Dropdown as a Bottom Sheet
               Expanded(
                 flex: 2,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
+                child: GestureDetector(
+                  onTap: () {
+                    _showCurrencySelectionSheet(context, currencies, onChanged);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.widthOf(4), vertical: 12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
                         color: Color.fromARGB(255, 164, 11, 159),
-                        width: 1), // Blue border color
-                  ),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<String>(
-                      value: currencyValue,
-                      items: currencies.map((currency) {
-                        return DropdownMenuItem<String>(
-                          value: currency,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: SizeConfig.widthOf(
-                                    4)), // Add horizontal padding
-                            child: Text(currency, style: txStyle14),
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: enabled ? onChanged : null,
-                      style: GoogleFonts.roboto(
-                        textStyle: txStyle14.copyWith(
-                          color: Colors.black,
-                        ),
+                        width: 1,
                       ),
-                      padding: EdgeInsets.zero, // Remove default padding
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          currencyValue,
+                          style: GoogleFonts.roboto(
+                            textStyle: txStyle14.copyWith(color: Colors.black),
+                          ),
+                        ),
+                        Icon(Icons.arrow_drop_down, color: Colors.black),
+                      ],
                     ),
                   ),
                 ),
@@ -326,6 +477,56 @@ class _SendMoneyScreenState extends State<SendMoneyScreen>
       ),
     );
   }
+
+  // Show the Custom Bottom Sheet for Currency Selection
+  void _showCurrencySelectionSheet(BuildContext context,
+      List<String> currencies, ValueChanged<String?> onChanged) {
+    CustomBottomImageSheet.show(
+      context,
+      options: currencies.map((currency) {
+        return BottomSheetOption(
+          icon: _getCurrencyIcon(
+              currency), // Use the custom method to get the icon
+          title: currency,
+          onTap: () {
+            onChanged(currency);
+            Navigator.pop(context);
+          },
+        );
+      }).toList(),
+    );
+  }
+
+// Custom method to get the appropriate currency icon
+  Widget _getCurrencyIcon(String currency) {
+    String assetPath;
+    switch (currency) {
+      case 'GHS':
+        assetPath = 'asset/images/ghs_flag.png';
+        break;
+      case 'NGN':
+        assetPath = 'asset/images/ngn_flag.png';
+        break;
+      case 'GBP':
+        assetPath = 'asset/images/gbp_flag.png';
+        break;
+      default:
+        assetPath =
+            'asset/images/default_flag.png'; // Add a default case if needed
+    }
+
+    return Container(
+      width: 40, // Set the width of the circle container
+      height: 40, // Set the height of the circle container
+      decoration: BoxDecoration(
+        shape: BoxShape.circle, // Make the container circular
+        image: DecorationImage(
+          image: AssetImage(assetPath),
+          fit: BoxFit.cover, // Cover the entire circle with the flag image
+        ),
+      ),
+    );
+  } // This is the closing brace for _getCurrencyIcon method
 
   // Build Note Section without a label and with a transparent background
   Widget _buildNoteSection() {

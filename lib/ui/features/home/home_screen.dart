@@ -6,11 +6,17 @@ import 'package:jeemo_pay/shared/constant.dart';
 import 'package:jeemo_pay/shared/size.dart';
 import 'package:jeemo_pay/shared/sizeConfig.dart';
 import 'package:jeemo_pay/shared/text_style.dart';
+import 'package:jeemo_pay/ui/content/about_us.dart';
+import 'package:jeemo_pay/ui/content/loan_and_about_bottom_sheet.dart';
+import 'package:jeemo_pay/ui/content/loan_details.dart';
 import 'package:jeemo_pay/ui/features/collect_payment/collect_payment_screen.dart';
+import 'package:jeemo_pay/ui/features/offers_screen/main_loan_screen.dart';
+import 'package:jeemo_pay/ui/features/offers_screen/travel_loan_screen.dart';
 import 'package:jeemo_pay/ui/features/settings/setting_screen.dart';
 import 'package:jeemo_pay/ui/features/user/menu_screen.dart';
+import 'package:jeemo_pay/ui/widget/bottom_assurance_widget.dart';
 import 'package:jeemo_pay/ui/widget/cash_inflow_widget.dart';
-import 'package:jeemo_pay/ui/widget/custom_header_jeemo_widget.dart';
+import 'package:jeemo_pay/ui/widget/home_custom_header_widget.dart';
 import 'package:jeemo_pay/ui/widget/custom_network_image.dart';
 import 'package:jeemo_pay/ui/widget/home_card_section_widget.dart';
 import 'package:jeemo_pay/ui/widget/scrollable_balance_widget.dart';
@@ -24,7 +30,7 @@ import 'package:jeemo_pay/ui/widget/pop_up_menu_widget.dart';
 import 'package:jeemo_pay/ui/features/user/wallet_screen.dart';
 import 'package:jeemo_pay/ui/features/transfer_funds/send_money_screen.dart';
 import 'package:jeemo_pay/ui/features/user/transaction_history_screen.dart';
-import 'package:jeemo_pay/ui/features/user/user_account_screen.dart';
+import 'package:jeemo_pay/ui/features/user/account_screens/user_account_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -108,7 +114,7 @@ class HomeContentScreen extends StatelessWidget {
       child: Column(
         children: [
           vertical20,
-          CustomHeaderWidget(),
+          HomeCustomHeaderWidget(),
           vertical5,
           vertical20,
           Expanded(
@@ -137,12 +143,16 @@ class HomeContentScreen extends StatelessWidget {
                         quickActionWidget(
                           title: "Exchange",
                           icon: Icons.swap_horiz,
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => SendMoneyScreen());
+                          },
                         ),
                         quickActionWidget(
                           title: "Loan",
                           icon: Icons.money_off,
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => LoanOptionsScreen());
+                          },
                         ),
                         PopupMenuWidget(
                           onSelected: onPopupMenuSelected,
@@ -152,31 +162,41 @@ class HomeContentScreen extends StatelessWidget {
                   ),
                   vertical30,
                   // New Loan Options Section
-                  Container(
-                    decoration: BoxDecoration(
-                      color: customColor, // Background color
-                      borderRadius:
-                          BorderRadius.circular(10), // Smooth border radius
-                    ),
-                    padding: EdgeInsets.all(15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment
-                          .spaceBetween, // Space between text and icon
-                      children: [
-                        Expanded(
-                          child: Text(
-                            "Our travel loan options",
-                            style: txStyle12.copyWith(color: Colors.white),
-                            textAlign: TextAlign
-                                .left, // Center text horizontally within the row
+                  GestureDetector(
+                    onTap: () {
+                      // Navigate to TravelLoanScreen when tapped
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TravelLoanScreen(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: customColor, // Background color
+                        borderRadius:
+                            BorderRadius.circular(10), // Smooth border radius
+                      ),
+                      padding: EdgeInsets.all(15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment
+                            .spaceBetween, // Space between text and icon
+                        children: [
+                          Expanded(
+                            child: Text(
+                              "Request loan to travel.",
+                              style: txStyle12.copyWith(color: Colors.white),
+                              textAlign: TextAlign.left,
+                            ),
                           ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios, // Greater than icon
-                          color: Colors.white,
-                          size: 16, // Adjust size as needed
-                        ),
-                      ],
+                          Icon(
+                            Icons.arrow_forward_ios, // Greater than icon
+                            color: Colors.white,
+                            size: 16, // Adjust size as needed
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   vertical30,
@@ -185,25 +205,33 @@ class HomeContentScreen extends StatelessWidget {
 
                   // Home Card Section with Lottie
                   vertical30,
-                  const HomeCardSectionWidget(
+                  HomeCardSectionWidget(
                     title: "📍 What is Jeemo.io?",
                     description: "All you need to know about your digital bank",
                     lottieAsset: 'asset/lottie/master_jeemo.json',
-                    backgroundColor: Color.fromARGB(255, 105, 9, 139),
+                    backgroundColor: const Color.fromARGB(255, 105, 9, 139),
+                    onTap: () {
+                      showAboutUsBottomSheet(context);
+                    },
                   ),
                   vertical20,
-                  const HomeCardSectionWidget(
+                  HomeCardSectionWidget(
                     title: "📍 Loan assistance for your travel needs",
                     description: "Fund your wallet with ease",
                     lottieAsset: 'asset/lottie/travel_money.json',
-                    backgroundColor: Color.fromARGB(255, 0, 0, 0),
+                    backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                    onTap: () {
+                      showLoanDetailsBottomSheet(context);
+                    },
                   ),
+
                   vertical20,
                   // New Section with Lottie Animation
                 ],
               ),
             ),
           ),
+          const LicensedAndAssuredWidget(),
         ],
       ),
     );

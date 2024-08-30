@@ -18,8 +18,8 @@ class MenuScreen extends StatelessWidget {
             CategorySection(
               title: "Manage finances",
               items: [
-                {"title": "Bank accounts", "icon": Icons.account_balance},
-                {"title": "Link account", "icon": Icons.add_card},
+                {"title": "Link your cards", "icon": Icons.account_balance},
+                {"title": "Add accounts", "icon": Icons.add_card},
               ],
             ),
             SizedBox(height: 16.0),
@@ -81,7 +81,7 @@ class MenuScreen extends StatelessWidget {
               title: "Profile and help centre",
               items: [
                 {"title": "Your profile", "icon": Icons.person_outlined},
-                {"title": "Your wallet", "icon": Icons.wallet_outlined},
+                {"title": "Your cards", "icon": Icons.wallet_outlined},
                 {"title": "Help centre", "icon": Icons.help_outlined},
               ],
             ),

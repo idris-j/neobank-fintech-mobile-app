@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jeemo_pay/ui/widget/bottom_sheet_icon_widget.dart';
 
 class CreditCardWidget extends StatelessWidget {
   final String? cardNumber;
@@ -64,7 +65,7 @@ class CreditCardWidget extends StatelessWidget {
                     IconButton(
                       icon: Icon(Icons.more_vert, color: Colors.white),
                       onPressed: () {
-                        _showBottomSheet(context);
+                        _showCustomBottomSheet(context);
                       },
                     ),
                   ],
@@ -136,49 +137,33 @@ class CreditCardWidget extends StatelessWidget {
     );
   }
 
-  void _showBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) {
-        return Container(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                leading:
-                    Icon(Icons.lock, color: const Color.fromARGB(255, 0, 0, 0)),
-                title: Text('Freeze card'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Handle Freeze card action
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.remove_red_eye,
-                    color: const Color.fromARGB(255, 0, 0, 0)),
-                title: Text('Hide/Unhide card details'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Handle Hide/Unhide card details action
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.settings,
-                    color: const Color.fromARGB(255, 0, 0, 0)),
-                title: Text('Settings'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Handle Settings action
-                },
-              ),
-            ],
-          ),
-        );
-      },
+  void _showCustomBottomSheet(BuildContext context) {
+    CustomBottomIconSheet.show(
+      context,
+      options: [
+        BottomSheetOption(
+          icon: Icons.lock,
+          title: 'Freeze card',
+          onTap: () {
+            // Handle Freeze card action
+          },
+        ),
+        BottomSheetOption(
+          icon: Icons.remove_red_eye,
+          title: 'Hide/Unhide card details',
+          onTap: () {
+            // Handle Hide/Unhide card details action
+          },
+        ),
+        BottomSheetOption(
+          icon: Icons.settings,
+          title: 'Settings',
+          onTap: () {
+            // Handle Settings action
+          },
+        ),
+        // You can add more options here
+      ],
     );
   }
 }

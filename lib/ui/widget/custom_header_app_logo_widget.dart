@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:jeemo_pay/ui/features/settings/setting_screen.dart';
 import 'package:jeemo_pay/ui/features/user/menu_screen.dart'; // Assuming you are using GetX for navigation
 
-class CustomHeaderWalletWidget extends StatelessWidget {
+class CustomHeaderAppLogoWidget extends StatelessWidget {
   final String?
       profileImageUrl; // Optional: for passing dynamic profile image URLs
   final String headerText; // Parameter for the text to display
 
-  CustomHeaderWalletWidget({
+  CustomHeaderAppLogoWidget({
     this.profileImageUrl,
     required this.headerText, // Required parameter for header text
   });

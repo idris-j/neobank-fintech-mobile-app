@@ -3,11 +3,15 @@ import 'package:get/get.dart';
 import 'package:jeemo_pay/ui/features/settings/setting_screen.dart';
 import 'package:jeemo_pay/ui/features/user/menu_screen.dart'; // Assuming you are using GetX for navigation
 
-class CustomHeaderWidget extends StatelessWidget {
+class CustomHeaderBackButtonWidget extends StatelessWidget {
   final String?
       profileImageUrl; // Optional: for passing dynamic profile image URLs
+  final String headerText; // Parameter for the text to display
 
-  CustomHeaderWidget({this.profileImageUrl});
+  CustomHeaderBackButtonWidget({
+    this.profileImageUrl,
+    required this.headerText, // Required parameter for header text
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,23 +37,18 @@ class CustomHeaderWidget extends StatelessWidget {
               ),
               child: Center(
                 child: IconButton(
-                  icon: Image.asset(
-                    'asset/images/jeemo_menu_icon.png', // Path to your image asset
-                    fit: BoxFit.contain,
-                    width: 20.0, // Set the size of the image here
-                    height: 20.0, // Set the size of the image here
-                  ),
+                  icon: Icon(Icons.arrow_back),
                   iconSize: 20.0, // Set the size of the button (not the image)
                   onPressed: () {
                     // Handle menu button press
-                    Get.to(() => MenuScreen()); // Navigate to MenuScreen
+                    Get.back(); // Navigate to MenuScreen
                   },
                 ),
               ),
             ),
             SizedBox(width: 10), // Space between icon and text
             Text(
-              "jeemo.io",
+              headerText, // Use the parameter for the header text
               style: TextStyle(
                 fontFamily: 'Roboto', // Use the BrickSans font
                 fontSize: 16.0, // Adjust font size as needed
@@ -58,18 +57,6 @@ class CustomHeaderWidget extends StatelessWidget {
               ),
             ),
           ],
-        ),
-        GestureDetector(
-          onTap: () {
-            Get.to(() => SettingScreen());
-          },
-          child: CircleAvatar(
-            radius: 25,
-            backgroundImage: NetworkImage(
-              profileImageUrl ??
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwsArWf2lZuLGqco6QoGM13keJb078XIgNWA&usqp=CAU",
-            ),
-          ),
         ),
       ],
     );
