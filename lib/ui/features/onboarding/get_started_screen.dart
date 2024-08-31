@@ -56,7 +56,7 @@ class GetStartedScreen extends StatelessWidget {
                       );
                     })),
             CustomButton(
-              label: "Open an account",
+              label: "Get started",
               onTap: () {
                 Get.to(SingUpScreen());
               },

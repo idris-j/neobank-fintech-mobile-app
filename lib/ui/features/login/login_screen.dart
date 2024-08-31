@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
             vertical20,
             Center(
               child: Text(
-                "Hey there!",
+                "Welcome back!",
                 style: txStyle27Bold,
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:jeemo_pay/shared/colors.dart';
+import 'package:jeemo_pay/ui/features/analytics/live_exchange_rates_screen.dart';
 import 'package:jeemo_pay/ui/features/transfer_funds/send_money_screen.dart';
 import 'package:jeemo_pay/ui/features/user/bank_statement_gen_screen.dart';
 import 'package:jeemo_pay/ui/features/user/user_bank_details_screen.dart'; // Import the UserBankDetailsScreen
@@ -40,7 +41,7 @@ class PopupMenuWidget extends StatelessWidget {
             // Navigate to the Live Exchange Rates screen
             // Example: Get.to(() => CurrencyConverterScreen());
             Get.to(() =>
-                const SendMoneyScreen()); // Navigate to UserBankDetailsScreen
+                ExchangeRatesScreen()); // Navigate to UserBankDetailsScreen
             break;
           case 'Add New Account':
             // Navigate to the Add New Account screen
