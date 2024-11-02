@@ -1,4 +1,4 @@
-import 'package:jeemo_pay/core/repositories/provider.dart';
+import 'package:jeemo_pay/core/providers/app_providers.dart';
 import 'package:jeemo_pay/services/theme_provider.dart';
 import 'package:jeemo_pay/shared/cache.dart';
 import 'package:jeemo_pay/shared/locator.dart';

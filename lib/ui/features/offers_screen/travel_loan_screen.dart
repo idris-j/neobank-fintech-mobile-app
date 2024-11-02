@@ -16,7 +16,7 @@ class TravelLoanScreen extends StatefulWidget {
 }
 
 class _TravelLoanScreenState extends State<TravelLoanScreen> {
-  String _fromCurrency = 'GHS';
+  String _fromCurrency = 'GBP';
   String _toCurrency = 'NGN';
   final _amountController = TextEditingController();
   final _receiverAmountController = TextEditingController();

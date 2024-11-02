@@ -1,4 +1,4 @@
-import 'package:jeemo_pay/core/repositories/user_repository.dart';
+import 'package:jeemo_pay/core/providers/user_provider.dart';
 import 'package:jeemo_pay/shared/colors.dart';
 import 'package:jeemo_pay/shared/constant.dart';
 import 'package:jeemo_pay/shared/size.dart';
@@ -33,8 +33,7 @@ class _SettingScreenState extends State<SettingScreen> {
               Row(
                 children: [
                   CustomNetworkImage(
-                      imageUrl: userProv
-                              .userProfileModel.data?.profilePicture ??
+                      imageUrl: userProv.userProfile!.data?.profilePicture ??
                           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwsArWf2lZuLGqco6QoGM13keJb078XIgNWA&usqp=CAU",
                       radius: 60),
                   horizontalx10,
@@ -42,13 +41,12 @@ class _SettingScreenState extends State<SettingScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${userProv.userProfileModel.data?.firstName} ${userProv.userProfileModel.data?.lastName}",
+                        "${userProv.userProfile!.data?.firstName} ${userProv.userProfile!.data?.lastName}",
                         style: txStyle20Bold,
                       ),
                       vertical5,
                       Text(
-                        userProv.userProfileModel.data?.merchantId ??
-                            "loading...",
+                        userProv.userProfile!.data?.merchantId ?? "loading...",
                         style: txStyle12,
                       ),
                     ],

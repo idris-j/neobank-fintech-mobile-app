@@ -4,7 +4,7 @@ import 'package:jeemo_pay/shared/shared_utils.dart';
 import 'package:jeemo_pay/shared/size.dart';
 import 'package:jeemo_pay/shared/sizeConfig.dart';
 import 'package:jeemo_pay/shared/text_style.dart';
-import 'package:jeemo_pay/ui/features/collect_payment/payment_repository.dart';
+import 'package:jeemo_pay/ui/features/collect_payment/payment_provider.dart';
 import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
 import 'package:jeemo_pay/ui/widget/custom_button.dart';
 import 'package:jeemo_pay/ui/widget/custom_button_load.dart';
@@ -228,7 +228,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                               // validator: (value) => userProv.validateAmount(value!),
                               decoration: InputDecoration(
                                 // prefixText: "₦",
-                                hintText: '£50',
+                                hintText: '₦5000',
                                 hintStyle: txStyle27Bold.copyWith(
                                     color: appPrimaryColor.withOpacity(0.2),
                                     fontSize: 30),

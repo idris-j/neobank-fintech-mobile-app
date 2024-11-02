@@ -28,7 +28,7 @@ class _CollectPaymentScreenState extends State<CollectPaymentScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Collect Payment",
+              "Receive Payment",
               style: txStyle27Bold,
             ),
             vertical10,

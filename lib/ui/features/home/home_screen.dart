@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:jeemo_pay/core/repositories/user_repository.dart';
+import 'package:jeemo_pay/core/providers/user_provider.dart';
 import 'package:jeemo_pay/shared/colors.dart';
 import 'package:jeemo_pay/shared/constant.dart';
 import 'package:jeemo_pay/shared/size.dart';
@@ -120,7 +120,7 @@ class HomeContentScreen extends StatelessWidget {
           Expanded(
             child: RefreshIndicator(
               onRefresh: () async {
-                await userProvider.fetchUserProfile();
+                //await userProvider.fetchUserProfile();
               },
               child: ListView(
                 children: [

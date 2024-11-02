@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 /// Class of validation functions that the app will use
 ///   - This class should be used as a mixin using the `with` keyword
 mixin Validators {
-  String password = "";
-  String pin = "";
+  String _password = "";
+  String _pin = "";
 
   final phoneNumberRegExp = RegExp(r'^(?:(?:\+|00)234)?(0[789][01]\d{8})$');
   final emailRegExp = RegExp(
@@ -39,9 +39,6 @@ mixin Validators {
     if (value.isEmpty) {
       return 'Field cannot be empty';
     }
-    // if (value.length < 3) {
-    //   return 'Amount too small';
-    // }
     if (value.length > 10) {
       return 'Amount too large';
     }
@@ -102,12 +99,12 @@ mixin Validators {
     } else if (value.length < 8) {
       return 'Password is too short';
     }
-    password = value;
+    _password = value;
     return null;
   }
 
   String? confirmPassword(String confirmPassword) {
-    if (confirmPassword != password) {
+    if (confirmPassword != _password) {
       return 'Passwords do not match';
     } else if (confirmPassword.isEmpty) {
       return 'Confirm password field cannot be empty';
@@ -115,13 +112,19 @@ mixin Validators {
     return null;
   }
 
-  String? confirmPin(String confirmPassword) {
-    if (confirmPassword != pin) {
+  String? validateConfirmPassword(String confirmPassword, String password) {
+    if (confirmPassword != password) {
+      return 'Passwords do not match';
+    }
+    return null;
+  }
+
+  String? confirmPin(String confirmPin) {
+    if (confirmPin != _pin) {
       return 'PINs do not match';
-    } else if (confirmPassword.isEmpty) {
+    } else if (confirmPin.isEmpty) {
       return 'Confirm PIN field cannot be empty';
     }
-
     return null;
   }
 
@@ -131,8 +134,7 @@ mixin Validators {
     } else if (value.length != 4) {
       return 'PIN must be 4 numbers';
     }
-    pin = value;
-
+    _pin = value;
     return null;
   }
 
@@ -142,18 +144,14 @@ mixin Validators {
     } else if (value.length != 4) {
       return 'PIN must be 4 numbers';
     }
-
     return null;
   }
 
   bool isValidDate(String input) {
-    // print(input);
     String editInput = input.replaceAll(RegExp('/'), '');
     try {
       final date = DateFormat("dd/MM/yyyy").parse(input);
       final originalFormatString = toOriginalFormatString(date);
-      // print(editInput);
-      // print(originalFormatString);
       return editInput == originalFormatString;
     } catch (e) {
       return false;
@@ -167,52 +165,20 @@ mixin Validators {
     return "$d$m$y";
   }
 
-  // String? valdateDate(String value) {
-  //   bool isdate = isValidDate(value);
-  //   DateTime date;
-  //   DateTime now = DateTime.now();
-  //   DateTime beg = DateFormat("dd/MM/yyyy").parse('01/01/1800');
-  //   DateTime end = DateFormat("dd/MM/yyyy").parse('01/01/3000');
-
-  //   try {
-  //     date = DateFormat("dd/MM/yyyy").parse(value);
-  //     //isdate = true;
-  //   } catch (e) {
-  //     isdate = false;
-  //     print('Note a correct date');
-  //   }
-
-  //   if (value.trim().isEmpty) {
-  //     return 'Date cannot be empty';
-  //   } else if (!isdate) {
-  //     return 'Enter a correct date';
-  //   } else if (date.isAfter(beg) && date.isBefore(end)) {
-  //     return null;
-  //   } else {
-  //     return 'Date out of range';
-  //   }
-
-  // }
-
   String? validateCard(String input) {
     if (input.isEmpty) {
       return "Please enter a credit card number";
     }
 
-    // input = getCleanedNumber(input);
-
     if (input.length < 8) {
-      // No need to even proceed with the validation if it's less than 8 characters
       return "Not a valid credit card number";
     }
 
     int sum = 0;
     int length = input.length;
     for (var i = 0; i < length; i++) {
-      // get digits in reverse order
       int digit = int.parse(input[length - i - 1]);
 
-      // every 2nd number multiply with 2
       if (i % 2 == 1) {
         digit *= 2;
       }

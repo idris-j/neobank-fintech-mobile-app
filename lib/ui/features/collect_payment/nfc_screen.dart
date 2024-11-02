@@ -4,7 +4,7 @@ import 'package:jeemo_pay/shared/shared_utils.dart';
 import 'package:jeemo_pay/shared/size.dart';
 import 'package:jeemo_pay/shared/sizeConfig.dart';
 import 'package:jeemo_pay/shared/text_style.dart';
-import 'package:jeemo_pay/ui/features/collect_payment/payment_repository.dart';
+import 'package:jeemo_pay/ui/features/collect_payment/payment_provider.dart';
 import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
 import 'package:jeemo_pay/ui/widget/custom_button.dart';
 import 'package:jeemo_pay/ui/widget/custom_button_load.dart';
@@ -75,7 +75,7 @@ class _NFCScreenState extends State<NFCScreen> {
             ),
             vertical10,
             Text(
-              "A secure method for taking contacless payment using your smartphone.",
+              "A secure method for charging any card using your smartphone.",
               style: txStyle14,
             ),
             vertical30,
@@ -102,7 +102,7 @@ class _NFCScreenState extends State<NFCScreen> {
                         // validator: (value) => userProv.validateAmount(value!),
                         decoration: InputDecoration(
                           // prefixText: "₦",
-                          hintText: '£50',
+                          hintText: '₦5000',
                           hintStyle: txStyle27Bold.copyWith(
                               color: appPrimaryColor.withOpacity(0.2),
                               fontSize: 30),
@@ -193,7 +193,7 @@ class _ReadCardScreenState extends State<ReadCardScreen> {
           ),
           vertical30,
           Lottie.asset("assets/lottie/jeemo_pay-nfc-lottie.json",
-              height: 300, width: 300),
+              height: 200, width: 250),
         ]),
       ),
     );
@@ -207,8 +207,8 @@ class ReadCardDetailsSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final paymentProvider = Provider.of<PaymentProvider>(context);
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: SizeConfig.widthOf(5), vertical: 20),
+      padding: EdgeInsets.symmetric(
+          horizontal: SizeConfig.widthOf(25), vertical: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -299,7 +299,7 @@ class NFCCompleted extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Lottie.asset("assets/lottie/done.json",
-                  height: 300, width: 300, repeat: false),
+                  height: 250, width: 250, repeat: false),
               vertical20,
               Text(
                 "Charge Completed",

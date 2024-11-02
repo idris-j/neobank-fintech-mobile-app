@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "assets/images/jeemo_pay-favicon.png",
+                "assets/images/jeemo_pay_icon.png",
                 height: SizeConfig.heightOf(25),
                 width: SizeConfig.widthOf(25),
               ),

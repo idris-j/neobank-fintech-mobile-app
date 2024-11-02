@@ -18,8 +18,8 @@ class GetStartedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<GetStartedItem> items = [
-      GetStartedItem("assets/lottie/getStarted.json",
-          "Manage your finances! The right way!", true),
+      GetStartedItem(
+          "assets/lottie/getStarted.json", "Your Eco-friendly Neobank!", true),
     ];
     final themeProvider = Provider.of<ThemeProvider>(context);
 
@@ -58,7 +58,7 @@ class GetStartedScreen extends StatelessWidget {
             CustomButton(
               label: "Get started",
               onTap: () {
-                Get.to(SingUpScreen());
+                Get.to(SignUpScreen());
               },
             ),
             vertical2s,

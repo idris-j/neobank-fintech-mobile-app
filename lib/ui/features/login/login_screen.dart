@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:jeemo_pay/core/repositories/user_repository.dart';
+import 'package:jeemo_pay/core/providers/user_provider.dart';
 import 'package:jeemo_pay/shared/colors.dart';
 import 'package:jeemo_pay/shared/size.dart';
 import 'package:jeemo_pay/shared/sizeConfig.dart';
 import 'package:jeemo_pay/shared/text_style.dart';
-import 'package:jeemo_pay/ui/features/login/login_repository.dart';
+import 'package:jeemo_pay/ui/features/login/login_provider.dart';
 import 'package:jeemo_pay/ui/features/signup/signup_screen.dart';
 import 'package:jeemo_pay/ui/widget/custom_app_bar.dart';
 import 'package:jeemo_pay/ui/widget/custom_bottom_nav.dart';
@@ -77,7 +77,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 readOnly: loginProvider.disableTextField,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) => loginProvider.validatePhoneNumber(value!),
-                onChanged: (text) => loginProvider.checkLoginForm()),
+                onChanged: (text) {
+                  loginProvider.checkLoginForm();
+                  return null;
+                }),
             vertical15,
             Row(
               children: [
@@ -87,9 +90,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       userProv: loginProvider.state,
                       onTap: loginProvider.loginComplete
                           ? () async {
-                              bool u = await loginProvider.merchantLogin();
+                              bool u = await loginProvider.login();
                               if (u) {
-                                userProvider.fetchUserProfile();
+                                userProvider.fetchUserProfile("some_user_id");
                                 Get.offAll(CustomBottomNav());
                               }
                             }
@@ -115,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
             vertical20,
             InkWell(
               onTap: () {
-                Get.to(SingUpScreen());
+                Get.to(SignUpScreen());
               },
               child: RichText(
                 textAlign: TextAlign.center,

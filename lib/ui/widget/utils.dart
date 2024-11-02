@@ -22,7 +22,7 @@ String convertStringToCurrency(String balanceString) {
   // Format the balance as a string with the thousands separator
   String formattedBalance = formatter.format(balance);
 
-  return "£$formattedBalance";
+  return "₦$formattedBalance";
 }
 
 String convertDateTimeDisplay(String date) {

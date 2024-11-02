@@ -361,7 +361,7 @@ class _LoanOptionsScreenState extends State<LoanOptionsScreen> {
           ),
           SizedBox(height: SizeConfig.heightOf(1)),
           Text(
-            '\$${_monthlyRepayment.toStringAsFixed(2)}',
+            '\₦${_monthlyRepayment.toStringAsFixed(2)}',
             style: GoogleFonts.roboto(
               textStyle: TextStyle(
                 fontSize: 20,

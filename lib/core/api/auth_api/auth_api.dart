@@ -1,16 +1,30 @@
-import 'package:jeemo_pay/core/data_models/login_model.dart';
+import '../api_utils/api_helper.dart';
+import '../api_utils/api_routes.dart';
+import '../api_utils/response_handler.dart';
 
-import '../../data_models/api_response.dart';
+class AuthApi {
+  Future<Map<String, dynamic>> login(String email, String password) async {
+    final response = await ApiHelper.post(ApiRoutes.login, {
+      'email': email,
+      'password': password,
+    });
+    return ResponseHandler.handleResponse(response.body);
+  }
 
-abstract class AuthApi {
-  Future<LoginModel> loginMerchant({String phoneNumber, String password});
-  Future<LoginModel> signupMerchant(
-      {String firstName,
-      String middleName,
-      String lastName,
-      String email,
-      String phoneNumber,
-      String password});
-  Future<ApiResponse> sendOtp({String phoneNumber});
-  Future<ApiResponse> validateOtp({String phoneNumber, String otp});
+  Future<Map<String, dynamic>> register({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String phoneNumber,
+    required String password,
+  }) async {
+    final response = await ApiHelper.post(ApiRoutes.register, {
+      'first_name': firstName,
+      'last_name': lastName,
+      'email': email,
+      'phone_number': phoneNumber,
+      'password': password,
+    });
+    return ResponseHandler.handleResponse(response.body);
+  }
 }

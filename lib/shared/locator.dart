@@ -9,11 +9,11 @@ import 'package:get_it/get_it.dart';
 
 GetIt locator = GetIt.instance;
 void setupLocator() {
-  locator.registerLazySingleton<API>(() => API());
+  //locator.registerLazySingleton<API>(() => API());
 
   // // API
   // // locator.registerLazySingleton<AuthenticationApi>(() => AuthenticationApiImpl());
-  locator.registerLazySingleton<AuthApi>(() => AuthImpl());
+  locator.registerLazySingleton<AuthApi>(() => AuthImplementation());
   locator.registerLazySingleton<UserApi>(() => UserApiImpl());
 
   // // Infrastructure

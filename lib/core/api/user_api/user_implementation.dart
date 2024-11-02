@@ -1,61 +1,59 @@
-import 'dart:convert';
-import 'dart:developer';
-
-import 'package:jeemo_pay/core/api/api_utils/api_routes.dart';
-import 'package:jeemo_pay/core/data_models/generae_link_model.dart';
+import 'package:jeemo_pay/core/api/user_api/user_api.dart';
+import 'package:jeemo_pay/core/api/api_utils/api_helper.dart';
+import 'package:jeemo_pay/core/data_models/generate_link_model.dart';
 import 'package:jeemo_pay/core/data_models/user_profile_model.dart';
-import 'package:jeemo_pay/shared/cache.dart';
-import 'package:jeemo_pay/shared/locator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'user_api.dart';
-import '../api_utils/api_helper.dart';
-import '../../data_models/api_response.dart';
+import 'dart:convert';
 
 class UserApiImpl implements UserApi {
-  var server = locator<API>();
-
-  Map<String, String> get header => {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        //'Authorization': 'Bearer ${locator<UserInfoCache>().token}',
-      };
-
-  Map<String, String> get mediaHeader => {
-        'Accept': 'application/json',
-        // 'Content-Type': 'application/json',
-        //'Authorization': 'Bearer ${locator<UserInfoCache>().token}',
-      };
-
-  Future<Map<String, String>> headerWithToken() async {
-    String token = await localStorage().getString("token") ?? "";
-
-    Map<String, String> headerToken = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Token $token',
-    };
-    log("token | $token ");
-
-    return headerToken;
+  @override
+  Future<Map<String, dynamic>> fetchUserProfile(String userId) async {
+    final response = await ApiHelper.get('/user/$userId');
+    if (response.statusCode == 200) {
+      return json.decode(response.body) as Map<String, dynamic>;
+    } else {
+      throw Exception('Failed to fetch user profile');
+    }
   }
 
   @override
-  Future<UserProfileModel> fetchUserProfile() async {
-    var responseBody = await server.get(
-        ApiRoutes.fetchMerchantProfile, await headerWithToken());
-    UserProfileModel response = userProfileModelFromJson(responseBody);
-    return response;
+  Future<Map<String, dynamic>> updateUserProfile(
+      Map<String, dynamic> userData) async {
+    final response = await ApiHelper.put('/user/update', body: userData);
+    if (response.statusCode == 200) {
+      return json.decode(response.body) as Map<String, dynamic>;
+    } else {
+      throw Exception('Failed to update user profile');
+    }
   }
 
   @override
-  Future<GenerateLinkModel> generateLink(
-      {String? amount, String? email}) async {
-    Map val = {"amount": amount, "email": email};
+  Future<GenerateLinkModel> generateLink({
+    required String amount,
+    required String email,
+  }) async {
+    // TODO: Implement generateLink properly
+    throw UnimplementedError();
+  }
 
-    var responseBody = await server.post(ApiRoutes.generatePaymentLink,
-        await headerWithToken(), jsonEncode(val));
-    GenerateLinkModel response = generateLinkModelFromJson(responseBody);
-    return response;
+  @override
+  Future<Map<String, dynamic>> login(String email, String password) async {
+    final response =
+        await ApiHelper.post('/login', {'email': email, 'password': password});
+    if (response.statusCode == 200) {
+      return json.decode(response.body) as Map<String, dynamic>;
+    } else {
+      throw Exception('Failed to login');
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>> register(String email, String password) async {
+    final response = await ApiHelper.post(
+        '/register', {'email': email, 'password': password});
+    if (response.statusCode == 200) {
+      return json.decode(response.body) as Map<String, dynamic>;
+    } else {
+      throw Exception('Failed to register');
+    }
   }
 }

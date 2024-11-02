@@ -23,7 +23,7 @@ class _WalletScreenState extends State<WalletScreen> {
       'expiryDate': "01/24",
       'cvv': "123",
       'cardType': "Physical",
-      'backgroundColor': "0xFF0057D9",
+      'backgroundColor': "0xFF4E873C",
     },
     {
       'cardNumber': "6789 0123 4567 8901",

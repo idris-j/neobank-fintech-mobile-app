@@ -17,8 +17,8 @@ class SendMoneyScreen extends StatefulWidget {
 
 class _SendMoneyScreenState extends State<SendMoneyScreen>
     with SingleTickerProviderStateMixin {
-  String _fromCurrency = 'GHS';
-  String _toCurrency = 'NGN';
+  String _fromCurrency = 'NGN';
+  String _toCurrency = 'GBP';
   final _amountController = TextEditingController();
   final _receiverAmountController = TextEditingController();
   final _noteController = TextEditingController();
