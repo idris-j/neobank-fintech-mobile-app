@@ -3,7 +3,7 @@
 Welcome to the Jeemo IO Mobile App! 
 
 Name: Jeemo.io
-Dscription: Real-life implementation of a digital bank.
+Description: Real-life implementation of a digital bank.
 
 ## Features
 
