@@ -1,6 +1,6 @@
 # Jeemo IO Mobile App
 
-Welcome to the Jeemo IO Mobile App! This application is designed to [briefly describe the purpose of your app, e.g., "provide users with seamless access to financial services, including mobile money transfers, payments, and more."] 
+Welcome to the Jeemo IO Mobile App! This application is a neobank in flutter.
 
 ## Features
 
