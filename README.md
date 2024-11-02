@@ -10,6 +10,15 @@ Dscription: Real-life implementation of a digital bank.
 - **User-Friendly Interface**: Designed for ease of use.
 - **Secure Transactions**: Implementing the latest security measures to protect user data.
 - **Real-Time Notifications**: Stay updated with instant alerts and notifications.
+- **Account Management**: Easily manage your accounts and view transaction history.
+- **Instant Transfers**: Send and receive money instantly between users.
+- **Budgeting Tools**: Track spending and set budgets to manage finances effectively.
+- **Card Controls**: Enable/disable cards and set spending limits directly from the app.
+- **Savings Features**: Set up savings goals and automatically save money with round-up features.
+- **Loan Services**: Access to personal loans and credit options based on user eligibility.
+- **Customer Support**: 24/7 in-app support for any queries or issues.
+- **Multi-Currency Support**: Conduct transactions in multiple currencies with ease.
+- **Integration with Third-Party Services**: Link to various financial services for enhanced user experience.
 
 ## Requirements
 
